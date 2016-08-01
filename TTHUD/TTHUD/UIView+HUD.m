@@ -57,7 +57,7 @@ static NSString * classAddress = @"";
         
         [hudTypeDict setObject:hudView forKey:typeKey];
     }
-    
+
     [self insertSubview:hudView atIndex:[self.subviews count]];
     
     /*给HUD添加一个Type属性用于判断*/

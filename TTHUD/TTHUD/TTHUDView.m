@@ -228,7 +228,6 @@ static CGFloat    const kTextBottomMargin     = 118-49;//69
             [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.bottom.mas_equalTo(self).offset(-kTextBottomMargin);
                 make.centerX.mas_equalTo(self);
-    
             }];
         
             break;
@@ -248,6 +247,7 @@ static CGFloat    const kTextBottomMargin     = 118-49;//69
         case TTHUDTitleTypeLoading: {
             
             [self addSubview:self.loadingImageView];
+            
             [self.loadingImageView mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerY.mas_equalTo(self);
                 make.centerX.mas_equalTo(self);
@@ -428,11 +428,11 @@ static CGFloat    const kTextBottomMargin     = 118-49;//69
 {
     if (!_loadingImageView) {
         _loadingImageView = ({
-            UIImageView *imageView    = [UIImageView new];
-            NSString *path = [[NSBundle mainBundle] pathForResource:@"jiuailogo_loading" ofType:@"gif"];
-            NSData *data = [NSData dataWithContentsOfFile:path];
-            UIImage *image = [UIImage sd_animatedGIFWithData:data];
-            imageView.image = image;
+            UIImageView *imageView = [UIImageView new];
+            NSString *path         = [[NSBundle mainBundle] pathForResource:@"jiuailogo_loading" ofType:@"gif"];
+            NSData *data           = [NSData dataWithContentsOfFile:path];
+            UIImage *image         = [UIImage sd_animatedGIFWithData:data];
+            imageView.image        = image;
             imageView;
         });
         
