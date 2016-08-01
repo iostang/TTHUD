@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		087194981D4EE58D00173DFD /* TTHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 087194971D4EE58D00173DFD /* TTHUDView.m */; };
+		0871949B1D4F2F3400173DFD /* UIImage+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 0871949A1D4F2F3400173DFD /* UIImage+GIF.m */; };
+		0871949D1D4F2FE400173DFD /* jiuailogo_loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0871949C1D4F2FE400173DFD /* jiuailogo_loading.gif */; };
+		087194A01D4F4DFF00173DFD /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0871949F1D4F4DFF00173DFD /* SecondViewController.m */; };
+		825E0875E0CFD6686A2FBDF6 /* libPods-TTHUD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D88B9FB2532299BA9B372F24 /* libPods-TTHUD.a */; };
 		B4AD20D41D4B926F002B5F12 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B4AD20D31D4B926F002B5F12 /* main.m */; };
 		B4AD20D71D4B926F002B5F12 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4AD20D61D4B926F002B5F12 /* AppDelegate.m */; };
 		B4AD20DA1D4B926F002B5F12 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4AD20D91D4B926F002B5F12 /* ViewController.m */; };
@@ -17,6 +22,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		087194961D4EE58D00173DFD /* TTHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTHUDView.h; sourceTree = "<group>"; };
+		087194971D4EE58D00173DFD /* TTHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTHUDView.m; sourceTree = "<group>"; };
+		087194991D4F2F3400173DFD /* UIImage+GIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GIF.h"; sourceTree = "<group>"; };
+		0871949A1D4F2F3400173DFD /* UIImage+GIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GIF.m"; sourceTree = "<group>"; };
+		0871949C1D4F2FE400173DFD /* jiuailogo_loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = jiuailogo_loading.gif; sourceTree = "<group>"; };
+		0871949E1D4F4DFF00173DFD /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		0871949F1D4F4DFF00173DFD /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		2429B4477368B830FCA23601 /* Pods-TTHUD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTHUD.release.xcconfig"; path = "Pods/Target Support Files/Pods-TTHUD/Pods-TTHUD.release.xcconfig"; sourceTree = "<group>"; };
+		44E264218B2504D1DEBCB508 /* Pods-TTHUD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTHUD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TTHUD/Pods-TTHUD.debug.xcconfig"; sourceTree = "<group>"; };
 		B4AD20CF1D4B926F002B5F12 /* TTHUD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TTHUD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4AD20D31D4B926F002B5F12 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B4AD20D51D4B926F002B5F12 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -29,6 +43,7 @@
 		B4AD20E31D4B926F002B5F12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4AD20EC1D4B94AE002B5F12 /* UIView+HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HUD.h"; sourceTree = "<group>"; };
 		B4AD20ED1D4B94AE002B5F12 /* UIView+HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HUD.m"; sourceTree = "<group>"; };
+		D88B9FB2532299BA9B372F24 /* libPods-TTHUD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TTHUD.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,17 +51,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				825E0875E0CFD6686A2FBDF6 /* libPods-TTHUD.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1266558CA5B200A7F0156580 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D88B9FB2532299BA9B372F24 /* libPods-TTHUD.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2348A74170C6FF541E7A798B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				44E264218B2504D1DEBCB508 /* Pods-TTHUD.debug.xcconfig */,
+				2429B4477368B830FCA23601 /* Pods-TTHUD.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B4AD20C61D4B926F002B5F12 = {
 			isa = PBXGroup;
 			children = (
 				B4AD20D11D4B926F002B5F12 /* TTHUD */,
 				B4AD20D01D4B926F002B5F12 /* Products */,
+				2348A74170C6FF541E7A798B /* Pods */,
+				1266558CA5B200A7F0156580 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,8 +100,15 @@
 				B4AD20D61D4B926F002B5F12 /* AppDelegate.m */,
 				B4AD20EC1D4B94AE002B5F12 /* UIView+HUD.h */,
 				B4AD20ED1D4B94AE002B5F12 /* UIView+HUD.m */,
+				087194991D4F2F3400173DFD /* UIImage+GIF.h */,
+				0871949A1D4F2F3400173DFD /* UIImage+GIF.m */,
+				087194961D4EE58D00173DFD /* TTHUDView.h */,
+				087194971D4EE58D00173DFD /* TTHUDView.m */,
 				B4AD20D81D4B926F002B5F12 /* ViewController.h */,
 				B4AD20D91D4B926F002B5F12 /* ViewController.m */,
+				0871949E1D4F4DFF00173DFD /* SecondViewController.h */,
+				0871949F1D4F4DFF00173DFD /* SecondViewController.m */,
+				0871949C1D4F2FE400173DFD /* jiuailogo_loading.gif */,
 				B4AD20DB1D4B926F002B5F12 /* Main.storyboard */,
 				B4AD20DE1D4B926F002B5F12 /* Assets.xcassets */,
 				B4AD20E01D4B926F002B5F12 /* LaunchScreen.storyboard */,
@@ -91,9 +133,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B4AD20E61D4B926F002B5F12 /* Build configuration list for PBXNativeTarget "TTHUD" */;
 			buildPhases = (
+				FF49FE1FBE5DDA7991A171D3 /* [CP] Check Pods Manifest.lock */,
 				B4AD20CB1D4B926F002B5F12 /* Sources */,
 				B4AD20CC1D4B926F002B5F12 /* Frameworks */,
 				B4AD20CD1D4B926F002B5F12 /* Resources */,
+				757EE4762F7421948266E54D /* [CP] Embed Pods Frameworks */,
+				373CA80FBEE0D6229C52ED16 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -142,6 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4AD20E21D4B926F002B5F12 /* LaunchScreen.storyboard in Resources */,
+				0871949D1D4F2FE400173DFD /* jiuailogo_loading.gif in Resources */,
 				B4AD20DF1D4B926F002B5F12 /* Assets.xcassets in Resources */,
 				B4AD20DD1D4B926F002B5F12 /* Main.storyboard in Resources */,
 			);
@@ -149,14 +195,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		373CA80FBEE0D6229C52ED16 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TTHUD/Pods-TTHUD-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		757EE4762F7421948266E54D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TTHUD/Pods-TTHUD-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF49FE1FBE5DDA7991A171D3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B4AD20CB1D4B926F002B5F12 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0871949B1D4F2F3400173DFD /* UIImage+GIF.m in Sources */,
 				B4AD20DA1D4B926F002B5F12 /* ViewController.m in Sources */,
 				B4AD20D71D4B926F002B5F12 /* AppDelegate.m in Sources */,
+				087194A01D4F4DFF00173DFD /* SecondViewController.m in Sources */,
 				B4AD20EE1D4B94AE002B5F12 /* UIView+HUD.m in Sources */,
+				087194981D4EE58D00173DFD /* TTHUDView.m in Sources */,
 				B4AD20D41D4B926F002B5F12 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,6 +366,7 @@
 		};
 		B4AD20E71D4B926F002B5F12 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44E264218B2504D1DEBCB508 /* Pods-TTHUD.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TTHUD/Info.plist;
@@ -280,6 +378,7 @@
 		};
 		B4AD20E81D4B926F002B5F12 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2429B4477368B830FCA23601 /* Pods-TTHUD.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TTHUD/Info.plist;
@@ -308,6 +407,7 @@
 				B4AD20E81D4B926F002B5F12 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

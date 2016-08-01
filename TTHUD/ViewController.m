@@ -7,7 +7,8 @@
 //
 
 #import "ViewController.h"
-#import "UIView+HUD.h"
+
+#import "TTHUDView.h"
 
 @interface ViewController ()
 
@@ -18,65 +19,100 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.frame = CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds)-49);
+    self.navigationController.navigationBar.translucent = NO;
+    self.tabBarController.tabBar.translucent = NO;
+    self.view.backgroundColor = [UIColor colorWithRed:0.513 green:0.652 blue:1.000 alpha:1.000];
     
-    
-    
-    UIButton *btn = ({
+    UIButton *btnTop1 = ({
         UIButton *btn =  [UIButton buttonWithType:UIButtonTypeCustom];
         btn.backgroundColor = [UIColor redColor];
         btn.frame = CGRectMake(20, 20, 50, 50);
-        [btn addTarget:self action:@selector(goback) forControlEvents:UIControlEventTouchUpInside];
+        [btn addTarget:self action:@selector(top) forControlEvents:UIControlEventTouchUpInside];
+        [btn setTitle:@"Top" forState:UIControlStateNormal];
         btn;
     });
     
     
-    UIButton *btn1 = ({
+    UIButton *btnBom = ({
         UIButton *btn =   [UIButton buttonWithType:UIButtonTypeCustom];
         btn.backgroundColor = [UIColor redColor];
         btn.frame = CGRectMake(120, 20, 50, 50);
-        [btn addTarget:self action:@selector(goback1) forControlEvents:UIControlEventTouchUpInside];
+        [btn addTarget:self action:@selector(center) forControlEvents:UIControlEventTouchUpInside];
+        [btn setTitle:@"Cen" forState:UIControlStateNormal];
         btn;
     });
     
-    UIButton *btn2 = ({
+    UIButton *btnTop2 = ({
         UIButton *btn =   [UIButton buttonWithType:UIButtonTypeCustom];
         btn.backgroundColor = [UIColor redColor];
         btn.frame = CGRectMake(20, 80, 50, 50);
-        [btn addTarget:self action:@selector(goback2) forControlEvents:UIControlEventTouchUpInside];
+        [btn addTarget:self action:@selector(bom) forControlEvents:UIControlEventTouchUpInside];
+        [btn setTitle:@"Bom" forState:UIControlStateNormal];
         btn;
     });
     
-    [self.view addSubview:btn];
-    [self.view addSubview:btn1];
-    [self.view addSubview:btn2];
+    UIButton *btnTop3 = ({
+        UIButton *btn =   [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.backgroundColor = [UIColor redColor];
+        btn.frame = CGRectMake(120, 80, 50, 50);
+        [btn addTarget:self action:@selector(loading) forControlEvents:UIControlEventTouchUpInside];
+        [btn setTitle:@"Load" forState:UIControlStateNormal];
+        btn;
+    });
+
+    UIButton *btnTop5 = ({
+        UIButton *btn =   [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.backgroundColor = [UIColor redColor];
+        btn.frame = CGRectMake(200, 80, 50, 50);
+        [btn addTarget:self action:@selector(loading1) forControlEvents:UIControlEventTouchUpInside];
+        [btn setTitle:@"Load" forState:UIControlStateNormal];
+        btn;
+    });
     
+    UIButton *btnTop4 = ({
+        UIButton *btn =   [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.backgroundColor = [UIColor colorWithRed:0.621 green:1.000 blue:0.604 alpha:1.000];
+        btn.frame = CGRectMake(20, 180, 50, 50);
+        [btn addTarget:self action:@selector(stop) forControlEvents:UIControlEventTouchUpInside];
+        [btn setTitle:@"Stop" forState:UIControlStateNormal];
+        btn;
+    });
+    
+    [self.view addSubview:btnTop1];
+    [self.view addSubview:btnBom];
+    [self.view addSubview:btnTop2];
+    [self.view addSubview:btnTop3];
+    [self.view addSubview:btnTop4];
+    [self.view addSubview:btnTop5];
 }
 
-- (void)goback
+- (void)bom
 {
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.backgroundColor = [UIColor colorWithRed:0.4686 green:0.6716 blue:1.0 alpha:0.7];
-    btn.frame = CGRectMake(120, 200, 150, 50);
-    
-    [self.view tt_showHUD:btn type:TTHUDTypeTop];
+    [TTHUDView showClearCaCheHUDAddedToView:self.view];
 }
 
-- (void)goback2
+- (void)top
 {
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.backgroundColor = [UIColor colorWithRed:0.9987 green:0.4143 blue:0.4445 alpha:0.7];
-    btn.frame = CGRectMake(120, 300, 150, 50);
-    
-    [self.view tt_showHUD:btn type:TTHUDTypeTop];
+    [TTHUDView showNetworkVeryBadHUDAddedToView:self.view];
 }
 
-- (void)goback1
+- (void)center
 {
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.backgroundColor = [UIColor colorWithRed:0.4686 green:0.6716 blue:1.0 alpha:0.7];
-    btn.frame = CGRectMake(120, CGRectGetHeight(self.view.bounds) - 100, 150, 50);
-    
-    [self.view tt_showHUD:btn type:TTHUDTypeBottom];
+    [TTHUDView showNoMoneyNoBBHUDAddedToView:self.view];
+}
+
+- (void)stop
+{
+    [TTHUDView hideLoadingHUDForView:self.view];
+}
+- (void)loading
+{
+    [TTHUDView showLoadingHUDAddedToView:self.view];
+}
+- (void)loading1
+{
+    [TTHUDView showDisableInteractionLoading:self.view];
 }
 
 - (void)didReceiveMemoryWarning {
