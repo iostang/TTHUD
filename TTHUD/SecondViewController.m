@@ -23,7 +23,7 @@
 
 - (void)bom
 {
-    [TTHUDView showMessageHUDToViewBottom:self.view message:@"--------"];
+    [TTHUDView showFocusSuccessHUDAddedToView:self.view];
 }
 
 - (void)center

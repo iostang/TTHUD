@@ -460,12 +460,13 @@ static CGFloat    const kTextBottomMargin     = 118-49;//69
     //添加图片
     NSTextAttachment *attch = [[NSTextAttachment alloc] init];
     attch.image             = image;
-    attch.bounds            = CGRectMake(-4, 0, 11, 11);
+    attch.bounds            = CGRectMake(0, 0, image.size.width, image.size.width);
 
     // 创建带有图片的富文本
     NSAttributedString *string = [NSAttributedString attributedStringWithAttachment:attch];
+    NSAttributedString *place  = [[NSAttributedString alloc] initWithString:@"  "];
     [attri insertAttributedString:string atIndex:0];
-
+    [attri insertAttributedString:place atIndex:1];
     self.titleLabel.attributedText = attri;
 }
 
