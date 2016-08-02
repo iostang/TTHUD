@@ -28,14 +28,24 @@ typedef NS_ENUM(NSInteger,TTHUDShowType) {
 
 
 /**
- *  中间文本 或者文本和图片 细条
+ *  中间文本 细条
  */
 + (instancetype)showHUDToViewCenter:(UIView *)view message:(NSString *)message;
 
 /**
- *  底部文本 或者文本和图片 细条
+ *  底部文本 细条
  */
 + (instancetype)showHUDToViewBottom:(UIView *)view message:(NSString *)message;
+
+/**
+ *  中间文本和图片 细条
+ */
++ (instancetype)showHUDToViewCenterSuccessImage:(UIView *)view message:(NSString *)message imageName:(NSString *)imageName;
+
+/**
+ *  底部文本和图片 细条
+ */
++ (instancetype)showHUDToViewBottomSuccessImage:(UIView *)view message:(NSString *)message imageName:(NSString *)imageName;
 
 /**
  * 中间显示文本+成功图片 大方块
@@ -43,9 +53,19 @@ typedef NS_ENUM(NSInteger,TTHUDShowType) {
 + (instancetype)showSuccessHUDToView:(UIView *)view message:(NSString *)message;
 
 /**
+ * 中间显示文本+自定义成功图片 大方块
+ */
++ (instancetype)showSuccessHUDToView:(UIView *)view message:(NSString *)message imageName:(NSString *)imageName;
+
+/**
  * 中间显示文本+失败图片 大方块
  */
 + (instancetype)showErrorHUDToView:(UIView *)view message:(NSString *)message;
+
+/**
+ * 中间显示文本+自定义失败图片 大方块
+ */
++ (instancetype)showErrorHUDToView:(UIView *)view message:(NSString *)message imageName:(NSString *)imageName;
 
 /**
  * 中间显示Loading的gif图 圆形

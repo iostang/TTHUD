@@ -95,6 +95,11 @@ image_Loading; \
  */
 @property (nonatomic, copy  ) NSString *message;
 
+/**
+ *  图片名
+ */
+@property (nonatomic, copy  ) NSString *imageName;
+
 @end
 
 @implementation TTHUDView
@@ -107,10 +112,7 @@ image_Loading; \
  */
 + (instancetype)showHUDToViewCenter:(UIView *)view message:(NSString *)message
 {
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeCenterMessage message:message];
-    hud.frame      = view.bounds;
-    [view tt_showHUD:hud type:TTHUDTypeCenter];
-    return hud;
+  return [self showHUDToViewBottomSuccessImage:view message:message imageName:nil];
 }
 
 /**
@@ -118,7 +120,26 @@ image_Loading; \
  */
 + (instancetype)showHUDToViewBottom:(UIView *)view message:(NSString *)message
 {
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeBottomMessage message:message];
+  return [self showHUDToViewCenterSuccessImage:view message:message imageName:nil];
+}
+
+/**
+ *  中间文本和图片 细条
+ */
++ (instancetype)showHUDToViewCenterSuccessImage:(UIView *)view message:(NSString *)message imageName:(NSString *)imageName
+{
+    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeBottomMessage message:message imageName:imageName];
+    hud.frame      = view.bounds;
+    [view tt_showHUD:hud type:TTHUDTypeBottom];
+    return hud;
+}
+
+/**
+ *  底部文本和图片 细条
+ */
++ (instancetype)showHUDToViewBottomSuccessImage:(UIView *)view message:(NSString *)message imageName:(NSString *)imageName
+{
+    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeBottomMessage message:message imageName:imageName];
     hud.frame      = view.bounds;
     [view tt_showHUD:hud type:TTHUDTypeBottom];
     return hud;
@@ -129,7 +150,15 @@ image_Loading; \
  */
 + (instancetype)showSuccessHUDToView:(UIView *)view message:(NSString *)message
 {
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeCenterSuccessMessage message:message];
+    return [self showSuccessHUDToView:view message:message imageName:nil];
+}
+
+/**
+ * 中间显示文本+自定义成功图片 大方块
+ */
++ (instancetype)showSuccessHUDToView:(UIView *)view message:(NSString *)message imageName:(NSString *)imageName
+{
+    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeCenterSuccessMessage message:message imageName:imageName];
     hud.frame      = view.bounds;
     [view tt_showHUD:hud type:TTHUDTypeCenter];
     return hud;
@@ -140,7 +169,15 @@ image_Loading; \
  */
 + (instancetype)showErrorHUDToView:(UIView *)view message:(NSString *)message
 {
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeCenterErrorMessage message:message];
+    return [self showErrorHUDToView:view message:message imageName:nil];
+}
+
+/**
+ * 中间显示文本+自定义失败图片 大方块
+ */
++ (instancetype)showErrorHUDToView:(UIView *)view message:(NSString *)message imageName:(NSString *)imageName
+{
+    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeCenterErrorMessage message:message imageName:imageName];
     hud.frame      = view.bounds;
     [view tt_showHUD:hud type:TTHUDTypeCenter];
     return hud;
@@ -151,7 +188,7 @@ image_Loading; \
  */
 + (instancetype)showLoadingToView:(UIView *)view
 {
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeLoadingMessage message:nil];
+    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeLoadingMessage message:nil imageName:nil];
     hud.frame      = view.bounds;
     [view tt_showHUD:hud type:TTHUDTypeLoading];
     return hud;
@@ -162,7 +199,7 @@ image_Loading; \
  */
 + (instancetype)showDisableLoadingToView:(UIView *)view
 {
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeLoadingMessage message:nil];
+    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeLoadingMessage message:nil imageName:nil];
     hud.frame      = view.bounds;
     hud.userInteractionEnabled = YES;
     [view tt_showHUD:hud type:TTHUDTypeLoading];
@@ -174,7 +211,7 @@ image_Loading; \
  */
 + (instancetype)showNetworkToView:(UIView *)view
 {
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeNetworkVeryBadMessage message:@"网络有点慢，好心塞"];
+    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeNetworkVeryBadMessage message:@"网络有点慢，好心塞" imageName:nil];
     hud.frame      = view.bounds;
     [view tt_showHUD:hud type:TTHUDTypeTop];
     return hud;
@@ -185,7 +222,7 @@ image_Loading; \
  */
 + (instancetype)showNetworkToView:(UIView *)view customMessage:(NSString *)customMessage
 {
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeNetworkVeryBadMessage message:customMessage];
+    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeNetworkVeryBadMessage message:customMessage imageName:nil];
     hud.frame      = view.bounds;
     [view tt_showHUD:hud type:TTHUDTypeTop];
     return hud;
@@ -194,11 +231,11 @@ image_Loading; \
 
 #pragma mark - init
 
-- (instancetype)initWithType:(TTHUDShowType)type message:(NSString *)message
+- (instancetype)initWithType:(TTHUDShowType)type message:(NSString *)message imageName:(NSString *)imageName
 {
     self = [super init];
     if (self) {
-        
+        self.imageName = imageName;
         self.message = message;
         self.type = type;
         
@@ -219,7 +256,8 @@ image_Loading; \
     switch (self.type) {
         case TTHUDTitleTypeCenterMessage: {
             
-            self.titleLabel.text = self.message;
+            [self labelTitleAttributedText];
+            
             [self addSubview:self.titleLabel];
 
             [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -230,7 +268,8 @@ image_Loading; \
             
         case TTHUDTitleTypeBottomMessage: {
             
-             self.titleLabel.text = self.message;
+            [self labelTitleAttributedText];
+            
             [self addSubview:self.titleLabel];
 
             [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -317,21 +356,24 @@ image_Loading; \
 
 #pragma mark - 设置富文本字符串
 
-- (void)labelTitle:(NSString *)title labelImage:(UIImage *)image
+- (void)labelTitleAttributedText
 {
     // 创建一个富文本
-    NSMutableAttributedString *attri = [[NSMutableAttributedString alloc] initWithString:title];
+    NSMutableAttributedString *attri = [[NSMutableAttributedString alloc] initWithString:self.message];
 
-    //添加图片
-    NSTextAttachment *attch = [[NSTextAttachment alloc] init];
-    attch.image             = image;
-    attch.bounds            = CGRectMake(0, 0, image.size.width, image.size.width);
-
-    // 创建带有图片的富文本
-    NSAttributedString *string = [NSAttributedString attributedStringWithAttachment:attch];
-    NSAttributedString *place  = [[NSAttributedString alloc] initWithString:@"  "];
-    [attri insertAttributedString:string atIndex:0];
-    [attri insertAttributedString:place atIndex:1];
+    if (self.imageName) {
+        
+        //添加图片
+        NSTextAttachment *attch = [[NSTextAttachment alloc] init];
+        attch.image             = [UIImage imageNamed:self.imageName];
+        attch.bounds            = CGRectMake(0, 0, attch.image.size.width, attch.image.size.width);
+        
+        // 创建带有图片的富文本
+        NSAttributedString *string = [NSAttributedString attributedStringWithAttachment:attch];
+        NSAttributedString *place  = [[NSAttributedString alloc] initWithString:@"  "];
+        [attri insertAttributedString:string atIndex:0];
+        [attri insertAttributedString:place atIndex:1];
+    }
     
     self.titleLabel.attributedText = attri;
 }
