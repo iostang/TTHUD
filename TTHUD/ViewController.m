@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "TextHeader.h"
+#import "TTHUDConfig.h"
 #import "TTHUDView.h"
 
 @interface ViewController ()
@@ -89,7 +89,7 @@
 
 - (void)bom
 {
-    [TTHUDView showHUDToViewBottom:self.view message:kHUDTitle_FocusSuccess];
+    [TTHUDView showHUDToViewBottom:self.view message:kHUDTitle_FocusSuccess imageName:kImageName_AddImage];
 }
 
 - (void)top
@@ -99,7 +99,9 @@
 
 - (void)center
 {
-    [TTHUDView showHUDToViewCenter:self.view message:kHUDTitle_NoMoneyNoBB];
+//    [TTHUDView showHUDToViewCenter:self.view message:kHUDTitle_NoMoneyNoBB];
+//    [TTHUDView showSuccessHUDToView:self.view message:@"支付成功" imageName:kImageName_SuccessImage];
+    [TTHUDView showErrorHUDToView:self.view message:@"支付失败" imageName:kImageName_AddImage];
 }
 
 - (void)stop

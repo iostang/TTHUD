@@ -33,19 +33,19 @@ typedef NS_ENUM(NSInteger,TTHUDShowType) {
 + (instancetype)showHUDToViewCenter:(UIView *)view message:(NSString *)message;
 
 /**
+ *  中间文本和图片 细条
+ */
++ (instancetype)showHUDToViewCenter:(UIView *)view message:(NSString *)message imageName:(NSString *)imageName;
+
+/**
  *  底部文本 细条
  */
 + (instancetype)showHUDToViewBottom:(UIView *)view message:(NSString *)message;
 
 /**
- *  中间文本和图片 细条
- */
-+ (instancetype)showHUDToViewCenterSuccessImage:(UIView *)view message:(NSString *)message imageName:(NSString *)imageName;
-
-/**
  *  底部文本和图片 细条
  */
-+ (instancetype)showHUDToViewBottomSuccessImage:(UIView *)view message:(NSString *)message imageName:(NSString *)imageName;
++ (instancetype)showHUDToViewBottom:(UIView *)view message:(NSString *)message imageName:(NSString *)imageName;
 
 /**
  * 中间显示文本+成功图片 大方块
