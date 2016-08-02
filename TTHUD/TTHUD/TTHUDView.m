@@ -11,8 +11,13 @@
 #import "UIImage+GIF.h"
 
 
-static NSUInteger const kTitleLabelMaxLine    = 1;
+/*最大行数*/
+static NSUInteger const kTitleLabelMaxLine    = 2;
+
+/*文本背景高度*/
 static CGFloat    const kBackgroundHeight     = 41;
+
+/*Bottom的偏移量 118是设置的高度 需要减去tabbar高度*/
 static CGFloat    const kTextBottomMargin     = 118-49;//69
 
 #define kColor_TitleLabelBackground_BlackColor ([[UIColor blackColor] colorWithAlphaComponent:0.8])
@@ -28,6 +33,17 @@ static CGFloat    const kTextBottomMargin     = 118-49;//69
 
 #define kImage_AddImage                        ([UIImage imageNamed:@"inform_icon_add_normal"])
 #define kImage_SuccessImage                    ([UIImage imageNamed:@"inform_icon_success_normal"])
+
+
+#define kImage_LoadingImage \
+({ \
+NSString *path         = [[NSBundle mainBundle] pathForResource:@"jiuailogo_loading" ofType:@"gif"]; \
+NSData *data           = [NSData dataWithContentsOfFile:path]; \
+UIImage *image         = [UIImage sd_animatedGIFWithData:data]; \
+image; \
+});
+
+
 
 @interface TTLabel : UILabel
 
@@ -429,10 +445,7 @@ static CGFloat    const kTextBottomMargin     = 118-49;//69
     if (!_loadingImageView) {
         _loadingImageView = ({
             UIImageView *imageView = [UIImageView new];
-            NSString *path         = [[NSBundle mainBundle] pathForResource:@"jiuailogo_loading" ofType:@"gif"];
-            NSData *data           = [NSData dataWithContentsOfFile:path];
-            UIImage *image         = [UIImage sd_animatedGIFWithData:data];
-            imageView.image        = image;
+            imageView.image        = kImage_LoadingImage;
             imageView;
         });
         

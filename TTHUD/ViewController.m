@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.frame = CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds)-49);
+
     self.navigationController.navigationBar.translucent = NO;
     self.tabBarController.tabBar.translucent = NO;
     self.view.backgroundColor = [UIColor colorWithRed:0.513 green:0.652 blue:1.000 alpha:1.000];

@@ -10,9 +10,9 @@
 
 
 typedef NS_ENUM(NSInteger, TTHUDType) {
-    TTHUDTypeTop    = 1,
-    TTHUDTypeCenter = 2,
-    TTHUDTypeBottom = 3,
+    TTHUDTypeTop     = 1,
+    TTHUDTypeCenter  = 2,
+    TTHUDTypeBottom  = 3,
     TTHUDTypeLoading = 4,
 };
 
@@ -28,6 +28,5 @@ typedef NS_ENUM(NSInteger, TTHUDType) {
 
 
 @interface TTHUDManager : NSObject
-
 
 @end
