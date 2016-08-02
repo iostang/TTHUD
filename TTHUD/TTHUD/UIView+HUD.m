@@ -11,16 +11,15 @@
 #import "TTHUDView.h"
 
 /*HUD类型Key*/
-static const NSString * TTHUDTypeKey  = @"TTHUDTypeKey";
-
+static const NSString * TTHUDTypeKey             = @"TTHUDTypeKey";
 /*计时器Key*/
-static const NSString * TTHUDTimerKey = @"TTHUDTimerKey";
+static const NSString * TTHUDTimerKey            = @"TTHUDTimerKey";
 
 /*Hide时间*/
-static const CGFloat DurationTime     = 0.2;
+static const CGFloat DurationTime     = 0.2f;
 
 /*显示时长*/
-static const CGFloat ShowTime         = 10.0;
+static const CGFloat ShowTime         = 10.0f;
 
 static NSString * classAddress = @"";
 
@@ -36,10 +35,12 @@ static NSString * classAddress = @"";
 
 - (void)tt_showHUD:(UIView *)hudView type:(TTHUDType)type
 {
-    
-    classAddress = [NSString stringWithFormat:@"%p",self.superview];
-    NSString *typeKey = [NSString stringWithFormat:@"%@_%ld",classAddress,type];
     hudView.alpha = 0;
+    
+    /* 使用self.superview的内存地址来拼接type做唯一标示 当key使用 */
+    classAddress      = [NSString stringWithFormat:@"%p",self.superview];
+    NSString *typeKey = [NSString stringWithFormat:@"%@_%ld",classAddress,type];
+
     
     NSMutableDictionary *hudTypeDict = [TTHUDManager sharedManager].tt_dataSource;
     
@@ -57,7 +58,7 @@ static NSString * classAddress = @"";
         
         [hudTypeDict setObject:hudView forKey:typeKey];
     }
-
+    
     [self insertSubview:hudView atIndex:[self.subviews count]];
     
     /*给HUD添加一个Type属性用于判断*/
@@ -75,6 +76,7 @@ static NSString * classAddress = @"";
                          /*显示完成后用一个计时器延迟两秒Hide这个HUD*/
                          NSTimer *timer = [NSTimer timerWithTimeInterval:ShowTime target:self selector:@selector(tt_HUDTimerDidFinish:) userInfo:hudView repeats:NO];
                          [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+                         
                          /*给这个HUD添加一个计时器属性*/
                          objc_setAssociatedObject(hudView, &TTHUDTimerKey, timer, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                          
@@ -85,18 +87,19 @@ static NSString * classAddress = @"";
 
 - (void)tt_showLoading:(UIView *)loadingView
 {
-    classAddress = [NSString stringWithFormat:@"%p",self.superview];
+    loadingView.alpha = 0;
+    
+    classAddress      = [NSString stringWithFormat:@"%p",self.superview];
     NSString *typeKey = [NSString stringWithFormat:@"%@_%ld",classAddress,TTHUDTypeLoading];
     
     /*倒序数组 方便便利*/
-    for (UIView *subview  in [self.subviews reverseObjectEnumerator]) {
-        id key =  objc_getAssociatedObject(subview, &TTHUDTypeKey);
-        if ([subview isKindOfClass:[TTHUDView class]] && ([key isEqualToString: typeKey])) {
+    for (UIView * view in [self.subviews reverseObjectEnumerator]) {
+        
+        if ([view isKindOfClass:[TTHUDView class]] && ([objc_getAssociatedObject(view, &TTHUDTypeKey) isEqualToString: typeKey])) {
             return;
         }
+        
     }
-    
-    loadingView.alpha = 0;
     
     [self insertSubview:loadingView atIndex:[self.subviews count]];
     
@@ -117,33 +120,47 @@ static NSString * classAddress = @"";
     
 }
 
+/**
+ *  这个隐藏方法只针对于Loading
+ */
 + (BOOL)hideLoadingHUDForView:(UIView *)view
 {
     TTHUDView *hud = [self HUDForView:view];
+    
     if (hud != nil) {
         
         [UIView animateWithDuration:DurationTime animations:^{
+            
             hud.alpha = 0;
+            
         } completion:^(BOOL finished) {
+            
             [hud removeFromSuperview];
+            
         }];
         
         return YES;
     }
+    
     return NO;
 }
 
 + (TTHUDView *)HUDForView:(UIView *)view
 {
+    /* 隐藏式需要给classaddress重新赋值 */
+    classAddress      = [NSString stringWithFormat:@"%p",view.superview];
+    NSString *typeKey = [NSString stringWithFormat:@"%@_%ld",classAddress,TTHUDTypeLoading];
+    
     /*倒序数组 方便便利*/
-    NSEnumerator *subviewsEnum = [view.subviews reverseObjectEnumerator];
-    for (UIView *subview in subviewsEnum) {
-        id key =  objc_getAssociatedObject(subview, &TTHUDTypeKey);
-        NSString *typeKey = [NSString stringWithFormat:@"%@_%ld",classAddress,TTHUDTypeLoading];
-        if ([subview isKindOfClass:self] && ([key isEqualToString: typeKey])) {
+    for (UIView *subview in [view.subviews reverseObjectEnumerator]) {
+        
+        if ([subview isKindOfClass:self] && ([objc_getAssociatedObject(subview, &TTHUDTypeKey) isEqualToString: typeKey])) {
+            
             return (TTHUDView *)subview;
         }
+        
     }
+    
     return nil;
 }
 
@@ -175,14 +192,14 @@ static NSString * classAddress = @"";
                          [hudView removeFromSuperview];
                          
                          NSMutableDictionary *hudTypeDict = [TTHUDManager sharedManager].tt_dataSource;
+                         
                          /*如果dataSource字典里面包含这个HUD*/
                          if ([[hudTypeDict allValues] containsObject:hudView]) {
+                             
                              /*key == 获取HUD的Type*/
                              id key =  objc_getAssociatedObject(hudView, &TTHUDTypeKey);
                              
-                             if (key) {
-                                 [hudTypeDict removeObjectForKey:key];
-                             }
+                             [hudTypeDict removeObjectForKey:key];
                          }
                          
                      }];
