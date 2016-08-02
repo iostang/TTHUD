@@ -11,7 +11,7 @@
 		087194A81D4F64C900173DFD /* TTHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 087194A31D4F64C900173DFD /* TTHUDView.m */; };
 		087194A91D4F64C900173DFD /* UIImage+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 087194A51D4F64C900173DFD /* UIImage+GIF.m */; };
 		087194AA1D4F64C900173DFD /* UIView+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 087194A71D4F64C900173DFD /* UIView+HUD.m */; };
-		087194AC1D4F64E400173DFD /* jiuailogo_loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 087194AB1D4F64E400173DFD /* jiuailogo_loading.gif */; };
+		08B5781E1D5076C7002BE704 /* TTHUDResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 08B5781D1D5076C7002BE704 /* TTHUDResource.bundle */; };
 		825E0875E0CFD6686A2FBDF6 /* libPods-TTHUD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D88B9FB2532299BA9B372F24 /* libPods-TTHUD.a */; };
 		B4AD20D41D4B926F002B5F12 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B4AD20D31D4B926F002B5F12 /* main.m */; };
 		B4AD20D71D4B926F002B5F12 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4AD20D61D4B926F002B5F12 /* AppDelegate.m */; };
@@ -30,7 +30,7 @@
 		087194A51D4F64C900173DFD /* UIImage+GIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GIF.m"; sourceTree = "<group>"; };
 		087194A61D4F64C900173DFD /* UIView+HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HUD.h"; sourceTree = "<group>"; };
 		087194A71D4F64C900173DFD /* UIView+HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HUD.m"; sourceTree = "<group>"; };
-		087194AB1D4F64E400173DFD /* jiuailogo_loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = jiuailogo_loading.gif; sourceTree = "<group>"; };
+		08B5781D1D5076C7002BE704 /* TTHUDResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TTHUDResource.bundle; sourceTree = "<group>"; };
 		2429B4477368B830FCA23601 /* Pods-TTHUD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTHUD.release.xcconfig"; path = "Pods/Target Support Files/Pods-TTHUD/Pods-TTHUD.release.xcconfig"; sourceTree = "<group>"; };
 		44E264218B2504D1DEBCB508 /* Pods-TTHUD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTHUD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TTHUD/Pods-TTHUD.debug.xcconfig"; sourceTree = "<group>"; };
 		B4AD20CF1D4B926F002B5F12 /* TTHUD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TTHUD.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,7 +67,7 @@
 				087194A51D4F64C900173DFD /* UIImage+GIF.m */,
 				087194A61D4F64C900173DFD /* UIView+HUD.h */,
 				087194A71D4F64C900173DFD /* UIView+HUD.m */,
-				087194AB1D4F64E400173DFD /* jiuailogo_loading.gif */,
+				08B5781D1D5076C7002BE704 /* TTHUDResource.bundle */,
 			);
 			path = TTHUD;
 			sourceTree = "<group>";
@@ -195,7 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4AD20E21D4B926F002B5F12 /* LaunchScreen.storyboard in Resources */,
-				087194AC1D4F64E400173DFD /* jiuailogo_loading.gif in Resources */,
+				08B5781E1D5076C7002BE704 /* TTHUDResource.bundle in Resources */,
 				B4AD20DF1D4B926F002B5F12 /* Assets.xcassets in Resources */,
 				B4AD20DD1D4B926F002B5F12 /* Main.storyboard in Resources */,
 			);

@@ -38,9 +38,27 @@ static CGFloat const kNumber_InsetsNumber = 14;
 
 #define kSize_LoadingSize                      ((CGSize){40,40})
 
-#define kImage_AddImage                        ([UIImage imageNamed:@"inform_icon_add_normal"])
-#define kImage_SuccessImage                    ([UIImage imageNamed:@"inform_icon_success_normal"])
-#define kImage_LoadingImage                    ([UIImage sd_animatedGIFNamed:@"jiuailogo_loading"])
+#define kImage_AddImage \
+({ \
+NSString *bundlePath = [[NSBundle mainBundle].resourcePath stringByAppendingPathComponent:@"TTHUDResource.bundle"]; \
+UIImage *image_Add = [UIImage imageWithContentsOfFile: [[NSBundle bundleWithPath:bundlePath] pathForResource:@"inform_icon_add_normal@2x" ofType:@"png"]]; \
+image_Add; \
+})
+
+#define kImage_SuccessImage \
+({ \
+NSString *bundlePath = [[NSBundle mainBundle].resourcePath stringByAppendingPathComponent:@"TTHUDResource.bundle"]; \
+UIImage *image_Success = [UIImage imageWithContentsOfFile: [[NSBundle bundleWithPath:bundlePath] pathForResource:@"inform_icon_success_normal@2x" ofType:@"png"]]; \
+image_Success; \
+})
+
+#define kImage_LoadingImage \
+({\
+NSString *bundlePath = [[NSBundle mainBundle].resourcePath stringByAppendingPathComponent:@"TTHUDResource.bundle"]; \
+NSData *data = [NSData dataWithContentsOfFile:[[NSBundle bundleWithPath:bundlePath] pathForResource:@"jiuailogo_loading" ofType:@"gif"]]; \
+UIImage *image_Loading = [UIImage sd_animatedGIFWithData:data]; \
+image_Loading; \
+})
 
 
 @interface TTLabel : UILabel
@@ -211,10 +229,12 @@ static CGFloat const kNumber_InsetsNumber = 14;
 {
     self = [super init];
     if (self) {
+        
         self.message = message;
-        self.userInteractionEnabled = NO;
         self.type = type;
-        [self setupViews];
+        
+        [self config];
+        
     }
     return self;
 }
@@ -223,12 +243,18 @@ static CGFloat const kNumber_InsetsNumber = 14;
 {
     self = [super init];
     if (self) {
-        
-        self.userInteractionEnabled = NO;
+
         self.type = type;
-        [self setupViews];
+        [self config];
+        
     }
     return self;
+}
+
+- (void)config
+{
+    self.userInteractionEnabled = NO;
+    [self setupViews];
 }
 
 - (void)setupViews
