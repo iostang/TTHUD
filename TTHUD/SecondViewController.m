@@ -8,6 +8,7 @@
 
 #import "SecondViewController.h"
 #import "TTHUDView.h"
+#import "TextHeader.h"
 
 @interface SecondViewController ()
 
@@ -23,13 +24,34 @@
 
 - (void)bom
 {
-    [TTHUDView showFocusSuccessHUDAddedToView:self.view];
+    [TTHUDView showHUDToViewCenter:self.view message:kHUDTitle_ClearCaChe];
 }
 
 - (void)center
 {
-    [TTHUDView showMessageHUDToViewCenter:self.view message:@"----------------------------------------------------------------------------------------------------------------------------------------------------------------------------"];
+    [TTHUDView showSuccessHUDToView:self.view message:kHUDTitle_SelectedGoodsSpecification];
 }
+
+- (void)top
+{
+    [TTHUDView showNetworkToView:self.view customMessage:@"没有网了哦 亲~"];
+}
+
+
+- (void)stop
+{
+    [TTHUDView hideLoadingHUDForView:self.view];
+}
+
+- (void)loading
+{
+    [TTHUDView showLoadingToView:self.view];
+}
+- (void)loading1
+{
+    [TTHUDView showDisableLoadingToView:self.view];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

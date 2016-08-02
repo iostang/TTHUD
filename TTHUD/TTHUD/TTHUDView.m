@@ -11,6 +11,7 @@
 #import "UIImage+GIF.h"
 
 
+
 /*最大行数*/
 static NSUInteger const kTitleLabelMaxLine    = 5;
 
@@ -43,6 +44,7 @@ static NSString * const kImageName_LoadingImage = @"jiuailogo_loading";
 #define kTitleLabelTextEdgeInsets              (UIEdgeInsetsMake(kNumber_InsetsNumber, kNumber_InsetsNumber, kNumber_InsetsNumber, kNumber_InsetsNumber))
 
 #define kSize_LoadingSize                      ((CGSize){40,40})
+#define kSize_SuccessHUDSize                   ((CGSize){100,100})
 
 #define kImage_AddImage \
 ({ \
@@ -76,7 +78,7 @@ image_Loading; \
 /**
  *  HUD类型
  */
-@property (nonatomic, assign) TTHUDTitleType type;
+@property (nonatomic, assign) TTHUDShowType type;
 
 /**
  *  纯文本加背景色类型的提示
@@ -99,139 +101,100 @@ image_Loading; \
 
 #pragma mark - 各种类型的HUD
 
-+ (instancetype)showSelectedBrandHUDAddedToView:(UIView *)view
+
+/**
+ *  中间文本 或者文本和图片 细条
+ */
++ (instancetype)showHUDToViewCenter:(UIView *)view message:(NSString *)message
 {
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeSelectedBrand];
+    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeCenterMessage message:message];
     hud.frame      = view.bounds;
     [view tt_showHUD:hud type:TTHUDTypeCenter];
     return hud;
 }
 
-+ (instancetype)showSelectedGoodsSpecHUDAddedToView:(UIView *)view
+/**
+ *  底部文本 或者文本和图片 细条
+ */
++ (instancetype)showHUDToViewBottom:(UIView *)view message:(NSString *)message
 {
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeSelectedGoodsSpecification];
-    hud.frame      = view.bounds;
-    [view tt_showHUD:hud type:TTHUDTypeCenter];
-    return hud;
-}
-
-+ (instancetype)showAddDetailDescHUDAddedToView:(UIView *)view
-{
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeAddDetailDescription];
-    hud.frame      = view.bounds;
-    [view tt_showHUD:hud type:TTHUDTypeCenter];
-    return hud;
-}
-
-+ (instancetype)showSelectedCategoryHUDAddedToView:(UIView *)view
-{
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeSelectedCategory];
-    hud.frame      = view.bounds;
-    [view tt_showHUD:hud type:TTHUDTypeCenter];
-    return hud;
-}
-
-+ (instancetype)showSelectedIsNewHUDAddedToView:(UIView *)view
-{
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeSelectedIsNew];
-    hud.frame      = view.bounds;
-    [view tt_showHUD:hud type:TTHUDTypeCenter];
-    return hud;
-}
-
-+ (instancetype)showNoTitleNoCanHUDAddedToView:(UIView *)view
-{
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeNoTitleNoCan];
-    hud.frame      = view.bounds;
-    [view tt_showHUD:hud type:TTHUDTypeCenter];
-    return hud;
-}
-
-+ (instancetype)showNoMoneyNoBBHUDAddedToView:(UIView *)view
-{
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeNoMoneyNoBB];
-    hud.frame      = view.bounds;
-    [view tt_showHUD:hud type:TTHUDTypeCenter];
-    return hud;
-}
-
-+ (instancetype)showPostageCannotBeZeroHUDAddedToView:(UIView *)view
-{
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypePostageCannotBeZero];
-    hud.frame      = view.bounds;
-    [view tt_showHUD:hud type:TTHUDTypeCenter];
-    return hud;
-}
-
-+ (instancetype)showClearCaCheHUDAddedToView:(UIView *)view
-{
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeClearCaChe];
+    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeBottomMessage message:message];
     hud.frame      = view.bounds;
     [view tt_showHUD:hud type:TTHUDTypeBottom];
     return hud;
 }
 
-+ (instancetype)showFocusSuccessHUDAddedToView:(UIView *)view
+/**
+ * 中间显示文本+成功图片 大方块
+ */
++ (instancetype)showSuccessHUDToView:(UIView *)view message:(NSString *)message
 {
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeFocusSuccess];
+    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeCenterSuccessMessage message:message];
     hud.frame      = view.bounds;
-    [view tt_showHUD:hud type:TTHUDTypeBottom];
+    [view tt_showHUD:hud type:TTHUDTypeCenter];
     return hud;
 }
 
-+ (instancetype)showCommentSuccessHUDAddedToView:(UIView *)view
+/**
+ * 中间显示文本+失败图片 大方块
+ */
++ (instancetype)showErrorHUDToView:(UIView *)view message:(NSString *)message
 {
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeCommentSuccess];
+    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeCenterErrorMessage message:message];
     hud.frame      = view.bounds;
-    [view tt_showHUD:hud type:TTHUDTypeBottom];
+    [view tt_showHUD:hud type:TTHUDTypeCenter];
     return hud;
 }
 
-+ (instancetype)showLoadingHUDAddedToView:(UIView *)view
+/**
+ * 中间显示Loading的gif图 圆形
+ */
++ (instancetype)showLoadingToView:(UIView *)view
 {
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeLoading];
+    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeLoadingMessage message:nil];
     hud.frame      = view.bounds;
-    [view tt_showLoading:hud];
+    [view tt_showHUD:hud type:TTHUDTypeLoading];
     return hud;
 }
 
-+ (instancetype)showDisableInteractionLoading:(UIView *)view
+/**
+ * 中间显示Loading的gif图  禁止下层级交互 圆形
+ */
++ (instancetype)showDisableLoadingToView:(UIView *)view
 {
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeLoading];
+    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeLoadingMessage message:nil];
     hud.frame      = view.bounds;
     hud.userInteractionEnabled = YES;
-    [view tt_showLoading:hud];
+    [view tt_showHUD:hud type:TTHUDTypeLoading];
     return hud;
-
 }
 
-+ (instancetype)showNetworkVeryBadHUDAddedToView:(UIView *)view
+/**
+ * 顶部显示纯文本 背景色为红色 细条
+ */
++ (instancetype)showNetworkToView:(UIView *)view
 {
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeNetworkVeryBad];
+    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeNetworkVeryBadMessage message:@"网络有点慢，好心塞"];
     hud.frame      = view.bounds;
     [view tt_showHUD:hud type:TTHUDTypeTop];
     return hud;
 }
 
-+ (instancetype)showMessageHUDToViewCenter:(UIView *)view message:(NSString *)message
+/**
+ * 顶部显示自定义纯文本 背景色为红色 细条
+ */
++ (instancetype)showNetworkToView:(UIView *)view customMessage:(NSString *)customMessage
 {
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeCustomCenterMessage message:message];
+    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeNetworkVeryBadMessage message:customMessage];
     hud.frame      = view.bounds;
-    [view tt_showHUD:hud type:TTHUDTypeCenter];
+    [view tt_showHUD:hud type:TTHUDTypeTop];
     return hud;
 }
 
-+ (instancetype)showMessageHUDToViewBottom:(UIView *)view message:(NSString *)message
-{
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeCustomBottomMessage message:message];
-    hud.frame      = view.bounds;
-    [view tt_showHUD:hud type:TTHUDTypeBottom];
-    return hud;
-}
 
 #pragma mark - init
 
-- (instancetype)initWithType:(TTHUDTitleType)type message:(NSString *)message
+- (instancetype)initWithType:(TTHUDShowType)type message:(NSString *)message
 {
     self = [super init];
     if (self) {
@@ -239,18 +202,6 @@ image_Loading; \
         self.message = message;
         self.type = type;
         
-        [self config];
-        
-    }
-    return self;
-}
-
-- (instancetype)initWithType:(TTHUDTitleType)type
-{
-    self = [super init];
-    if (self) {
-
-        self.type = type;
         [self config];
         
     }
@@ -266,104 +217,71 @@ image_Loading; \
 - (void)setupViews
 {
     switch (self.type) {
-        case TTHUDTitleTypeSelectedBrand:
-        case TTHUDTitleTypeSelectedGoodsSpecification:
-        case TTHUDTitleTypeAddDetailDescription:
-        case TTHUDTitleTypeSelectedCategory:
-        case TTHUDTitleTypeSelectedIsNew:
-        case TTHUDTitleTypeNoTitleNoCan:
-        case TTHUDTitleTypeNoMoneyNoBB:
-        case TTHUDTitleTypePostageCannotBeZero:
-        case TTHUDTitleTypeCustomCenterMessage: {
+        case TTHUDTitleTypeCenterMessage: {
             
-            self.titleLabel.text = [self convertToString:self.type];
+            self.titleLabel.text = self.message;
             [self addSubview:self.titleLabel];
-            
-            [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.centerY.mas_equalTo(self);
-                make.centerX.mas_equalTo(self);
-            }];
-            
-            break;
-        }
-        case TTHUDTitleTypeFocusSuccess: {
-            
-            [self labelTitle:[self convertToString:self.type] labelImage:kImage_AddImage];
-            [self addSubview:self.titleLabel];
-            
-            [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.bottom.mas_equalTo(self).offset(-kTextBottomMargin);
-                make.centerX.mas_equalTo(self);
-            }];
 
-            break;
+            [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.center.mas_equalTo(self);
+            }];
         }
-        case TTHUDTitleTypeCommentSuccess: {
+            break;
             
-            [self labelTitle:[self convertToString:self.type] labelImage:kImage_SuccessImage];
+        case TTHUDTitleTypeBottomMessage: {
+            
+             self.titleLabel.text = self.message;
             [self addSubview:self.titleLabel];
-            
+
             [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.bottom.mas_equalTo(self).offset(-kTextBottomMargin);
                 make.centerX.mas_equalTo(self);
             }];
-        
-            break;
         }
-        case TTHUDTitleTypeClearCaChe: {
+            break;
             
-            [self labelTitle:[self convertToString:self.type] labelImage:kImage_SuccessImage];
+        case TTHUDTitleTypeCenterSuccessMessage:
+        case TTHUDTitleTypeCenterErrorMessage: {
+            
+            self.titleLabel.text = self.message;
             [self addSubview:self.titleLabel];
             
             [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.bottom.mas_equalTo(self).offset(-kTextBottomMargin);
-                make.centerX.mas_equalTo(self);
+                make.center.mas_equalTo(self);
+                make.size.mas_equalTo(kSize_SuccessHUDSize);
             }];
-            
-            break;
         }
-        case TTHUDTitleTypeLoading: {
+            break;
+            
+        case TTHUDTitleTypeLoadingMessage: {
             
             [self addSubview:self.loadingImageView];
-            
+
             [self.loadingImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.centerY.mas_equalTo(self);
-                make.centerX.mas_equalTo(self);
+                make.center.mas_equalTo(self);
             }];
-            
-            break;
+
         }
-        case TTHUDTitleTypeNetworkVeryBad: {
+            break;
             
-            self.titleLabel.backgroundColor     = kColor_TitleLabelBackground_RedColor;
+        case TTHUDTitleTypeNetworkVeryBadMessage: {
+            
             self.titleLabel.layer.cornerRadius  = 0;
             self.titleLabel.layer.masksToBounds = NO;
+            self.titleLabel.text                = self.message;
             self.titleLabel.font                = kFont_TitleLabelFont_NetworkVeryBad;
-            self.titleLabel.text                = [self convertToString:self.type];
-            
+            self.titleLabel.backgroundColor     = kColor_TitleLabelBackground_RedColor;
+
             [self addSubview:self.titleLabel];
-     
+
             [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.right.mas_equalTo(self);
-                make.centerX.mas_equalTo(self);
+                make.centerX.left.right.mas_equalTo(self);
                 make.height.mas_equalTo(kNetWorkVeryBadHeight);
                 make.top.mas_equalTo(self).offset(-kNetWorkVeryBadHeight);
             }];
-            
-            break;
+
         }
-        case TTHUDTitleTypeCustomBottomMessage: {
-            
-            self.titleLabel.text = [self convertToString:self.type];
-            [self addSubview:self.titleLabel];
-            
-            [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.bottom.mas_equalTo(self).offset(-kTextBottomMargin);
-                make.centerX.mas_equalTo(self);
-            }];
-            
             break;
-        }
     }
     
     [self tt_updateConstraints];
@@ -372,25 +290,15 @@ image_Loading; \
 - (void)tt_updateConstraints
 {
     switch (self.type) {
-        case TTHUDTitleTypeSelectedBrand:
-        case TTHUDTitleTypeSelectedGoodsSpecification:
-        case TTHUDTitleTypeAddDetailDescription:
-        case TTHUDTitleTypeSelectedCategory:
-        case TTHUDTitleTypeSelectedIsNew:
-        case TTHUDTitleTypeNoTitleNoCan:
-        case TTHUDTitleTypeNoMoneyNoBB:
-        case TTHUDTitleTypePostageCannotBeZero: {
-            break;
+        case TTHUDTitleTypeCenterMessage:
+        case TTHUDTitleTypeBottomMessage:
+        case TTHUDTitleTypeCenterSuccessMessage:
+        case TTHUDTitleTypeCenterErrorMessage:
+        case TTHUDTitleTypeLoadingMessage: {
         }
-        case TTHUDTitleTypeClearCaChe:
-        case TTHUDTitleTypeFocusSuccess:
-        case TTHUDTitleTypeCommentSuccess: {
             break;
-        }
-        case TTHUDTitleTypeLoading: {
-            break;
-        }
-        case TTHUDTitleTypeNetworkVeryBad: {
+            
+        case TTHUDTitleTypeNetworkVeryBadMessage: {
             
             [self.titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.top.mas_equalTo(self);
@@ -398,92 +306,14 @@ image_Loading; \
             [UIView animateWithDuration:0.25 animations:^{
                 [self layoutIfNeeded];
             }];
-           
-            break;
+            
         }
-        case TTHUDTitleTypeCustomCenterMessage: {
             break;
-        }
-        case TTHUDTitleTypeCustomBottomMessage: {
-            break;
-        }
     }
-    
-    
    
 }
 
 #pragma mark - 根据枚举类型返回对应的字符串
-
-- (NSString*)convertToString:(TTHUDTitleType)type
-{
-    NSString *result = nil;
-    
-    switch (type) {
-        case TTHUDTitleTypeSelectedBrand: {
-            result = kHUDTitle_SelectedBrand;
-            break;
-        }
-        case TTHUDTitleTypeSelectedGoodsSpecification: {
-            result = kHUDTitle_SelectedGoodsSpecification;
-            break;
-        }
-        case TTHUDTitleTypeAddDetailDescription: {
-            result = kHUDTitle_AddDetailDescription;
-            break;
-        }
-        case TTHUDTitleTypeSelectedCategory: {
-            result = kHUDTitle_SelectedCategory;
-            break;
-        }
-        case TTHUDTitleTypeSelectedIsNew: {
-            result = kHUDTitle_SelectedIsNew;
-            break;
-        }
-        case TTHUDTitleTypeNoTitleNoCan: {
-            result = kHUDTitle_NoTitleNoCan;
-            break;
-        }
-        case TTHUDTitleTypeNoMoneyNoBB: {
-            result = kHUDTitle_NoMoneyNoBB;
-            break;
-        }
-        case TTHUDTitleTypePostageCannotBeZero: {
-            result = kHUDTitle_PostageCannotBeZero;
-            break;
-        }
-        case TTHUDTitleTypeClearCaChe: {
-            result = kHUDTitle_ClearCaChe;
-            break;
-        }
-        case TTHUDTitleTypeFocusSuccess: {
-            result = kHUDTitle_FocusSuccess;
-            break;
-        }
-        case TTHUDTitleTypeCommentSuccess: {
-            result = kHUDTitle_CommentSuccess;
-            break;
-        }
-        case TTHUDTitleTypeLoading: {
-            result = kHUDTitle_Loading;
-            break;
-        }
-        case TTHUDTitleTypeNetworkVeryBad: {
-            result = kHUDTitle_NetworkVeryBad;
-            break;
-        }
-        case TTHUDTitleTypeCustomCenterMessage: {
-            result =  self.message;
-            break;
-        }
-        case TTHUDTitleTypeCustomBottomMessage: {
-            result = self.message;
-            break;
-        }
-            
-    }
-    return result;
-}
 
 #pragma mark - 设置富文本字符串
 

@@ -10,133 +10,63 @@
 #import "UIView+HUD.h"
 
 
-/*center*/
-static NSString * const kHUDTitle_SelectedBrand              = @"请选择品牌";
-/*center*/
-static NSString * const kHUDTitle_SelectedGoodsSpecification = @"请选择商品属性规格";
-/*center*/
-static NSString * const kHUDTitle_AddDetailDescription       = @"请添加详细描述";
-/*center*/
-static NSString * const kHUDTitle_SelectedCategory           = @"请选择分类";
-/*center*/
-static NSString * const kHUDTitle_SelectedIsNew              = @"请选择是否全新";
-/*center*/
-static NSString * const kHUDTitle_NoTitleNoCan               = @"没有标题怎么行";
-/*center*/
-static NSString * const kHUDTitle_NoMoneyNoBB                = @"不能不谈价格哦";
-/*center*/
-static NSString * const kHUDTitle_PostageCannotBeZero        = @"邮费不能为零";
-//bottom
-static NSString * const kHUDTitle_ClearCaChe                 = @"缓存清理成功";
-//bottom + image
-static NSString * const kHUDTitle_FocusSuccess               = @"关注成功";
-//bottom + image
-static NSString * const kHUDTitle_CommentSuccess             = @"添加评论成功";
-/*center*/
-static NSString * const kHUDTitle_Loading                    = @"Loading";
-/*Network*/
-static NSString * const kHUDTitle_NetworkVeryBad             = @"网络有点慢，好心塞";
-
-typedef NS_ENUM(NSInteger,TTHUDTitleType) {
+typedef NS_ENUM(NSInteger,TTHUDShowType) {
     
-    TTHUDTitleTypeSelectedBrand = 0,
-    TTHUDTitleTypeSelectedGoodsSpecification ,
-    TTHUDTitleTypeAddDetailDescription ,
-    TTHUDTitleTypeSelectedCategory ,
-    TTHUDTitleTypeSelectedIsNew ,
-    TTHUDTitleTypeNoTitleNoCan ,
-    TTHUDTitleTypeNoMoneyNoBB ,
-    TTHUDTitleTypePostageCannotBeZero ,
-    TTHUDTitleTypeClearCaChe ,
-    TTHUDTitleTypeFocusSuccess ,
-    TTHUDTitleTypeCommentSuccess ,
-    TTHUDTitleTypeLoading ,
-    TTHUDTitleTypeNetworkVeryBad ,
-    TTHUDTitleTypeCustomCenterMessage ,
-    TTHUDTitleTypeCustomBottomMessage ,
+    TTHUDTitleTypeBottomMessage = 0,            //底部文本 或者文本和图片 细条
+    TTHUDTitleTypeCenterMessage ,               //中间文本 或者文本和图片 细条
+    
+    TTHUDTitleTypeCenterErrorMessage ,          //中间显示文本+失败图片 大方块
+    TTHUDTitleTypeCenterSuccessMessage ,        //中间显示文本+成功图片 大方块
+    
+    TTHUDTitleTypeLoadingMessage ,              //中间显示Loading的gif图 圆形
+    
+    TTHUDTitleTypeNetworkVeryBadMessage ,       //顶部显示纯文本 背景色为红色 细条
 
 };
 
 @interface TTHUDView : UIView
 
-/**
- *  请选择品牌
- */
-+ (instancetype)showSelectedBrandHUDAddedToView:(UIView *)view;
 
 /**
- *  请选择商品属性规格
+ *  中间文本 或者文本和图片 细条
  */
-+ (instancetype)showSelectedGoodsSpecHUDAddedToView:(UIView *)view;
++ (instancetype)showHUDToViewCenter:(UIView *)view message:(NSString *)message;
 
 /**
- *  请添加详细描述
+ *  底部文本 或者文本和图片 细条
  */
-+ (instancetype)showAddDetailDescHUDAddedToView:(UIView *)view;
++ (instancetype)showHUDToViewBottom:(UIView *)view message:(NSString *)message;
 
 /**
- *  请选择分类
+ * 中间显示文本+成功图片 大方块
  */
-+ (instancetype)showSelectedCategoryHUDAddedToView:(UIView *)view;
++ (instancetype)showSuccessHUDToView:(UIView *)view message:(NSString *)message;
 
 /**
- *  请选择是否全新
+ * 中间显示文本+失败图片 大方块
  */
-+ (instancetype)showSelectedIsNewHUDAddedToView:(UIView *)view;
++ (instancetype)showErrorHUDToView:(UIView *)view message:(NSString *)message;
 
 /**
- *  没有标题怎么行
+ * 中间显示Loading的gif图 圆形
  */
-+ (instancetype)showNoTitleNoCanHUDAddedToView:(UIView *)view;
++ (instancetype)showLoadingToView:(UIView *)view;
 
 /**
- *  不能不谈价格哦
+ * 中间显示Loading的gif图  禁止下层级交互 圆形
  */
-+ (instancetype)showNoMoneyNoBBHUDAddedToView:(UIView *)view;
++ (instancetype)showDisableLoadingToView:(UIView *)view;
 
 /**
- *  邮费不能为零
+ * 顶部显示纯文本 背景色为红色 细条
  */
-+ (instancetype)showPostageCannotBeZeroHUDAddedToView:(UIView *)view;
++ (instancetype)showNetworkToView:(UIView *)view;
 
 /**
- *  缓存清理成功
+ * 顶部显示自定义纯文本 背景色为红色 细条
  */
-+ (instancetype)showClearCaCheHUDAddedToView:(UIView *)view;
++ (instancetype)showNetworkToView:(UIView *)view customMessage:(NSString *)customMessage;
 
-/**
- *  关注成功
- */
-+ (instancetype)showFocusSuccessHUDAddedToView:(UIView *)view;
 
-/**
- *  添加评论成功
- */
-+ (instancetype)showCommentSuccessHUDAddedToView:(UIView *)view;
-
-/**
- *  Loading
- */
-+ (instancetype)showLoadingHUDAddedToView:(UIView *)view;
-
-/**
- *  Loading And DisableInteraction
- */
-+ (instancetype)showDisableInteractionLoading:(UIView *)view;
-
-/**
- *  网络有点慢，好心塞
- */
-+ (instancetype)showNetworkVeryBadHUDAddedToView:(UIView *)view;
-
-/**
- *  显示自定义文案 在视图中间
- */
-+ (instancetype)showMessageHUDToViewCenter:(UIView *)view message:(NSString *)message;
-
-/**
- *  显示自定义文案 在视图底部
- */
-+ (instancetype)showMessageHUDToViewBottom:(UIView *)view message:(NSString *)message;
 
 @end

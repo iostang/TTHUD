@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "TextHeader.h"
 #import "TTHUDView.h"
 
 @interface ViewController ()
@@ -89,17 +89,17 @@
 
 - (void)bom
 {
-    [TTHUDView showClearCaCheHUDAddedToView:self.view];
+    [TTHUDView showHUDToViewBottom:self.view message:kHUDTitle_FocusSuccess];
 }
 
 - (void)top
 {
-    [TTHUDView showNetworkVeryBadHUDAddedToView:self.view];
+    [TTHUDView showNetworkToView:self.view];
 }
 
 - (void)center
 {
-    [TTHUDView showNoMoneyNoBBHUDAddedToView:self.view];
+    [TTHUDView showHUDToViewCenter:self.view message:kHUDTitle_NoMoneyNoBB];
 }
 
 - (void)stop
@@ -108,11 +108,11 @@
 }
 - (void)loading
 {
-    [TTHUDView showLoadingHUDAddedToView:self.view];
+    [TTHUDView showLoadingToView:self.view];
 }
 - (void)loading1
 {
-    [TTHUDView showDisableInteractionLoading:self.view];
+    [TTHUDView showDisableLoadingToView:self.view];
 }
 
 - (void)didReceiveMemoryWarning {
