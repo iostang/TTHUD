@@ -19,7 +19,7 @@ static const NSString * TTHUDTimerKey            = @"TTHUDTimerKey";
 static const CGFloat DurationTime     = 0.2f;
 
 /*显示时长*/
-static const CGFloat ShowTime         = 10.0f;
+static const CGFloat ShowTime         = 2.0f;
 
 static NSString * classAddress = @"";
 
@@ -50,9 +50,7 @@ static NSString * classAddress = @"";
         UIView *view = [hudTypeDict objectForKey:typeKey];
         NSTimer *timer = (NSTimer *)objc_getAssociatedObject(view, &TTHUDTimerKey);
         [timer invalidate];
-        view.alpha = 0;
-        [view removeFromSuperview];
-        [hudTypeDict removeObjectForKey:typeKey];
+        [self tt_hideHUD:view];
         
     } else {
         
@@ -196,15 +194,10 @@ static NSString * classAddress = @"";
                          /*如果dataSource字典里面包含这个HUD*/
                          if ([[hudTypeDict allValues] containsObject:hudView]) {
                              
-                             /*key == 获取HUD的Type*/
-                             id key =  objc_getAssociatedObject(hudView, &TTHUDTypeKey);
-                             
-                             [hudTypeDict removeObjectForKey:key];
+                             [hudTypeDict removeObjectForKey:objc_getAssociatedObject(hudView, &TTHUDTypeKey)];
                          }
                          
                      }];
-    
-    
 }
 
 @end
