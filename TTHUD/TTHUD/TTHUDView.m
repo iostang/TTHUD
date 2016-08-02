@@ -20,6 +20,9 @@ static CGFloat    const kNetWorkVeryBadHeight = 41;
 /*Bottom的偏移量 118是设置的高度 需要减去tabbar高度*/
 static CGFloat    const kTextBottomMargin     = 118-49;//69
 
+/*label insets number*/
+static CGFloat const kNumber_InsetsNumber = 14;
+
 /* label max width */
 #define  kTitleLabel_PreferredMaxLayoutWidth   CGRectGetWidth([UIScreen mainScreen].bounds)-100
 
@@ -27,11 +30,11 @@ static CGFloat    const kTextBottomMargin     = 118-49;//69
 #define kColor_TitleLabelBackground_RedColor   ([UIColor colorWithRed:234.0f/255.0f green:65.0f/255.0f blue:65.0f/255.0f alpha:0.860])
 #define kColor_TitleLabelTextColor             ([UIColor whiteColor])
 
-#define kFont_TitleLabelFont_NetworkVeryBad    ([UIFont systemFontOfSize:14])
+#define kFont_TitleLabelFont_NetworkVeryBad    ([UIFont boldSystemFontOfSize:14])
 #define kFont_TitleLabelFont_Other             ([UIFont systemFontOfSize:15])
 
-#define kTitleLabelBorderEdgeInsets            (UIEdgeInsetsMake(-14, -14, -14, -14))
-#define kTitleLabelTextEdgeInsets              (UIEdgeInsetsMake(14, 14, 14, 14))
+#define kTitleLabelBorderEdgeInsets            (UIEdgeInsetsMake(-kNumber_InsetsNumber, -kNumber_InsetsNumber, -kNumber_InsetsNumber, -kNumber_InsetsNumber))
+#define kTitleLabelTextEdgeInsets              (UIEdgeInsetsMake(kNumber_InsetsNumber, kNumber_InsetsNumber, kNumber_InsetsNumber, kNumber_InsetsNumber))
 
 #define kSize_LoadingSize                      ((CGSize){40,40})
 
@@ -467,6 +470,7 @@ static CGFloat    const kTextBottomMargin     = 118-49;//69
     NSAttributedString *place  = [[NSAttributedString alloc] initWithString:@"  "];
     [attri insertAttributedString:string atIndex:0];
     [attri insertAttributedString:place atIndex:1];
+    
     self.titleLabel.attributedText = attri;
 }
 

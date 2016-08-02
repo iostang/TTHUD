@@ -63,62 +63,77 @@ typedef NS_ENUM(NSInteger,TTHUDTitleType) {
  *  请选择品牌
  */
 + (instancetype)showSelectedBrandHUDAddedToView:(UIView *)view;
+
 /**
  *  请选择商品属性规格
  */
 + (instancetype)showSelectedGoodsSpecHUDAddedToView:(UIView *)view;
+
 /**
  *  请添加详细描述
  */
 + (instancetype)showAddDetailDescHUDAddedToView:(UIView *)view;
+
 /**
  *  请选择分类
  */
 + (instancetype)showSelectedCategoryHUDAddedToView:(UIView *)view;
+
 /**
  *  请选择是否全新
  */
 + (instancetype)showSelectedIsNewHUDAddedToView:(UIView *)view;
+
 /**
  *  没有标题怎么行
  */
 + (instancetype)showNoTitleNoCanHUDAddedToView:(UIView *)view;
+
 /**
  *  不能不谈价格哦
  */
 + (instancetype)showNoMoneyNoBBHUDAddedToView:(UIView *)view;
+
 /**
  *  邮费不能为零
  */
 + (instancetype)showPostageCannotBeZeroHUDAddedToView:(UIView *)view;
+
 /**
  *  缓存清理成功
  */
 + (instancetype)showClearCaCheHUDAddedToView:(UIView *)view;
+
 /**
  *  关注成功
  */
 + (instancetype)showFocusSuccessHUDAddedToView:(UIView *)view;
+
 /**
  *  添加评论成功
  */
 + (instancetype)showCommentSuccessHUDAddedToView:(UIView *)view;
+
 /**
  *  Loading
  */
 + (instancetype)showLoadingHUDAddedToView:(UIView *)view;
+
 /**
  *  Loading And DisableInteraction
  */
 + (instancetype)showDisableInteractionLoading:(UIView *)view;
+
 /**
  *  网络有点慢，好心塞
  */
 + (instancetype)showNetworkVeryBadHUDAddedToView:(UIView *)view;
+
 /**
  *  显示自定义文案 在视图中间
  */
 + (instancetype)showMessageHUDToViewCenter:(UIView *)view message:(NSString *)message;
+
 /**
  *  显示自定义文案 在视图底部
  */
