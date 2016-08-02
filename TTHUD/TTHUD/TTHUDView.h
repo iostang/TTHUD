@@ -52,6 +52,9 @@ typedef NS_ENUM(NSInteger,TTHUDTitleType) {
     TTHUDTitleTypeCommentSuccess ,
     TTHUDTitleTypeLoading ,
     TTHUDTitleTypeNetworkVeryBad ,
+    TTHUDTitleTypeCustomCenterMessage ,
+    TTHUDTitleTypeCustomBottomMessage ,
+
 };
 
 @interface TTHUDView : UIView
@@ -112,5 +115,13 @@ typedef NS_ENUM(NSInteger,TTHUDTitleType) {
  *  网络有点慢，好心塞
  */
 + (instancetype)showNetworkVeryBadHUDAddedToView:(UIView *)view;
+/**
+ *  显示自定义文案 在视图中间
+ */
++ (instancetype)showMessageHUDToViewCenter:(UIView *)view message:(NSString *)message;
+/**
+ *  显示自定义文案 在视图底部
+ */
++ (instancetype)showMessageHUDToViewBottom:(UIView *)view message:(NSString *)message;
 
 @end

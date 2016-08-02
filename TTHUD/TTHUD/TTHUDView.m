@@ -12,13 +12,16 @@
 
 
 /*最大行数*/
-static NSUInteger const kTitleLabelMaxLine    = 2;
+static NSUInteger const kTitleLabelMaxLine    = 5;
 
 /*文本背景高度*/
-static CGFloat    const kBackgroundHeight     = 41;
+static CGFloat    const kNetWorkVeryBadHeight = 41;
 
 /*Bottom的偏移量 118是设置的高度 需要减去tabbar高度*/
 static CGFloat    const kTextBottomMargin     = 118-49;//69
+
+/* label max width */
+#define  kTitleLabel_PreferredMaxLayoutWidth   CGRectGetWidth([UIScreen mainScreen].bounds)-100
 
 #define kColor_TitleLabelBackground_BlackColor ([[UIColor blackColor] colorWithAlphaComponent:0.8])
 #define kColor_TitleLabelBackground_RedColor   ([UIColor colorWithRed:234.0f/255.0f green:65.0f/255.0f blue:65.0f/255.0f alpha:0.860])
@@ -27,22 +30,14 @@ static CGFloat    const kTextBottomMargin     = 118-49;//69
 #define kFont_TitleLabelFont_NetworkVeryBad    ([UIFont systemFontOfSize:14])
 #define kFont_TitleLabelFont_Other             ([UIFont systemFontOfSize:15])
 
-#define kTitleLabelEdgeInsets                  (UIEdgeInsetsMake(-14, -14, -14, -14))
+#define kTitleLabelBorderEdgeInsets            (UIEdgeInsetsMake(-14, -14, -14, -14))
+#define kTitleLabelTextEdgeInsets              (UIEdgeInsetsMake(14, 14, 14, 14))
 
 #define kSize_LoadingSize                      ((CGSize){40,40})
 
 #define kImage_AddImage                        ([UIImage imageNamed:@"inform_icon_add_normal"])
 #define kImage_SuccessImage                    ([UIImage imageNamed:@"inform_icon_success_normal"])
-
-
-#define kImage_LoadingImage \
-({ \
-NSString *path         = [[NSBundle mainBundle] pathForResource:@"jiuailogo_loading" ofType:@"gif"]; \
-NSData *data           = [NSData dataWithContentsOfFile:path]; \
-UIImage *image         = [UIImage sd_animatedGIFWithData:data]; \
-image; \
-});
-
+#define kImage_LoadingImage                    ([UIImage sd_animatedGIFNamed:@"jiuailogo_loading"])
 
 
 @interface TTLabel : UILabel
@@ -66,6 +61,10 @@ image; \
  */
 @property (nonatomic, strong) UIImageView *loadingImageView;
 
+/**
+ *  显示自定义文案
+ */
+@property (nonatomic, copy  ) NSString *message;
 
 @end
 
@@ -187,8 +186,35 @@ image; \
     return hud;
 }
 
++ (instancetype)showMessageHUDToViewCenter:(UIView *)view message:(NSString *)message
+{
+    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeCustomCenterMessage message:message];
+    hud.frame      = view.bounds;
+    [view tt_showHUD:hud type:TTHUDTypeCenter];
+    return hud;
+}
+
++ (instancetype)showMessageHUDToViewBottom:(UIView *)view message:(NSString *)message
+{
+    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeCustomBottomMessage message:message];
+    hud.frame      = view.bounds;
+    [view tt_showHUD:hud type:TTHUDTypeBottom];
+    return hud;
+}
 
 #pragma mark - init
+
+- (instancetype)initWithType:(TTHUDTitleType)type message:(NSString *)message
+{
+    self = [super init];
+    if (self) {
+        self.message = message;
+        self.userInteractionEnabled = NO;
+        self.type = type;
+        [self setupViews];
+    }
+    return self;
+}
 
 - (instancetype)initWithType:(TTHUDTitleType)type
 {
@@ -212,7 +238,8 @@ image; \
         case TTHUDTitleTypeSelectedIsNew:
         case TTHUDTitleTypeNoTitleNoCan:
         case TTHUDTitleTypeNoMoneyNoBB:
-        case TTHUDTitleTypePostageCannotBeZero: {
+        case TTHUDTitleTypePostageCannotBeZero:
+        case TTHUDTitleTypeCustomCenterMessage: {
             
             self.titleLabel.text = [self convertToString:self.type];
             [self addSubview:self.titleLabel];
@@ -284,8 +311,20 @@ image; \
             [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.right.mas_equalTo(self);
                 make.centerX.mas_equalTo(self);
-                make.height.mas_equalTo(kBackgroundHeight);
-                make.top.mas_equalTo(self).offset(-kBackgroundHeight);
+                make.height.mas_equalTo(kNetWorkVeryBadHeight);
+                make.top.mas_equalTo(self).offset(-kNetWorkVeryBadHeight);
+            }];
+            
+            break;
+        }
+        case TTHUDTitleTypeCustomBottomMessage: {
+            
+            self.titleLabel.text = [self convertToString:self.type];
+            [self addSubview:self.titleLabel];
+            
+            [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.bottom.mas_equalTo(self).offset(-kTextBottomMargin);
+                make.centerX.mas_equalTo(self);
             }];
             
             break;
@@ -325,6 +364,12 @@ image; \
                 [self layoutIfNeeded];
             }];
            
+            break;
+        }
+        case TTHUDTitleTypeCustomCenterMessage: {
+            break;
+        }
+        case TTHUDTitleTypeCustomBottomMessage: {
             break;
         }
     }
@@ -392,10 +437,15 @@ image; \
             result = kHUDTitle_NetworkVeryBad;
             break;
         }
-        default: {
-            result = @"";
+        case TTHUDTitleTypeCustomCenterMessage: {
+            result =  self.message;
             break;
         }
+        case TTHUDTitleTypeCustomBottomMessage: {
+            result = self.message;
+            break;
+        }
+            
     }
     return result;
 }
@@ -433,7 +483,7 @@ image; \
             label.textAlignment           = NSTextAlignmentCenter;
             label.layer.cornerRadius      = 5;
             label.layer.masksToBounds     = YES;
-            label.preferredMaxLayoutWidth = CGRectGetWidth(self.bounds)-50;
+            label.preferredMaxLayoutWidth = kTitleLabel_PreferredMaxLayoutWidth;
             label;
         });
     }
@@ -462,12 +512,12 @@ image; \
 
 - (CGSize)intrinsicContentSize
 {
-    return UIEdgeInsetsInsetRect((CGRect){0,0,[super intrinsicContentSize]}, kTitleLabelEdgeInsets).size;
+    return UIEdgeInsetsInsetRect((CGRect){0,0,[super intrinsicContentSize]}, kTitleLabelBorderEdgeInsets).size;
 }
 
 - (void)drawTextInRect:(CGRect)rect
 {
-    return [super drawTextInRect:UIEdgeInsetsInsetRect(rect,kTitleLabelEdgeInsets)];
+    return [super drawTextInRect:UIEdgeInsetsInsetRect(rect,kTitleLabelTextEdgeInsets)];
 }
 
 @end

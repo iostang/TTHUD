@@ -7,6 +7,7 @@
 //
 
 #import "SecondViewController.h"
+#import "TTHUDView.h"
 
 @interface SecondViewController ()
 
@@ -18,6 +19,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
+}
+
+- (void)bom
+{
+    [TTHUDView showMessageHUDToViewBottom:self.view message:@"--------"];
+}
+
+- (void)center
+{
+    [TTHUDView showMessageHUDToViewCenter:self.view message:@"----------------------------------------------------------------------------------------------------------------------------------------------------------------------------"];
 }
 
 - (void)didReceiveMemoryWarning {
