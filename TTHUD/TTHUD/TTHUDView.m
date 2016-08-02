@@ -23,6 +23,12 @@ static CGFloat    const kTextBottomMargin     = 118-49;//69
 /*label insets number*/
 static CGFloat const kNumber_InsetsNumber = 14;
 
+/*bundel and image name*/
+static NSString * const kBundelName             = @"TTHUDResource.bundle";
+static NSString * const kImageName_AddImage     = @"inform_icon_add_normal@2x";
+static NSString * const kImageName_SuccessImage = @"inform_icon_success_normal@2x";
+static NSString * const kImageName_LoadingImage = @"jiuailogo_loading";
+
 /* label max width */
 #define  kTitleLabel_PreferredMaxLayoutWidth   CGRectGetWidth([UIScreen mainScreen].bounds)-100
 
@@ -40,22 +46,22 @@ static CGFloat const kNumber_InsetsNumber = 14;
 
 #define kImage_AddImage \
 ({ \
-NSString *bundlePath = [[NSBundle mainBundle].resourcePath stringByAppendingPathComponent:@"TTHUDResource.bundle"]; \
-UIImage *image_Add = [UIImage imageWithContentsOfFile: [[NSBundle bundleWithPath:bundlePath] pathForResource:@"inform_icon_add_normal@2x" ofType:@"png"]]; \
+NSString *bundlePath = [[NSBundle mainBundle].resourcePath stringByAppendingPathComponent:kBundelName]; \
+UIImage *image_Add = [UIImage imageWithContentsOfFile: [[NSBundle bundleWithPath:bundlePath] pathForResource:kImageName_AddImage ofType:@"png"]]; \
 image_Add; \
 })
 
 #define kImage_SuccessImage \
 ({ \
-NSString *bundlePath = [[NSBundle mainBundle].resourcePath stringByAppendingPathComponent:@"TTHUDResource.bundle"]; \
-UIImage *image_Success = [UIImage imageWithContentsOfFile: [[NSBundle bundleWithPath:bundlePath] pathForResource:@"inform_icon_success_normal@2x" ofType:@"png"]]; \
+NSString *bundlePath = [[NSBundle mainBundle].resourcePath stringByAppendingPathComponent:kBundelName]; \
+UIImage *image_Success = [UIImage imageWithContentsOfFile: [[NSBundle bundleWithPath:bundlePath] pathForResource:kImageName_SuccessImage ofType:@"png"]]; \
 image_Success; \
 })
 
 #define kImage_LoadingImage \
 ({\
-NSString *bundlePath = [[NSBundle mainBundle].resourcePath stringByAppendingPathComponent:@"TTHUDResource.bundle"]; \
-NSData *data = [NSData dataWithContentsOfFile:[[NSBundle bundleWithPath:bundlePath] pathForResource:@"jiuailogo_loading" ofType:@"gif"]]; \
+NSString *bundlePath = [[NSBundle mainBundle].resourcePath stringByAppendingPathComponent:kBundelName]; \
+NSData *data = [NSData dataWithContentsOfFile:[[NSBundle bundleWithPath:bundlePath] pathForResource:kImageName_LoadingImage ofType:@"gif"]]; \
 UIImage *image_Loading = [UIImage sd_animatedGIFWithData:data]; \
 image_Loading; \
 })
