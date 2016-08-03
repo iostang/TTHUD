@@ -7,8 +7,7 @@
 //
 
 #import "SecondViewController.h"
-#import "TTHUDView.h"
-#import "TTHUDConfig.h"
+#import "TTHelper.h"
 
 @interface SecondViewController ()
 
@@ -24,32 +23,32 @@
 
 - (void)bom
 {
-    [TTHUDView showHUDToViewCenter:self.view message:@"缓存清理成功" imageName:kImageName_SuccessImage];
+    [TTHelper showPlusHUDToViewBottom:self.view message:@"关注成功"];
 }
 
 - (void)center
 {
-    [TTHUDView showSuccessHUDToView:self.view message:@"我们已经收到您的举报信息，会尽快进行处理! 感谢您!" imageName:kImageName_CenterSuccess];
+    [TTHelper showSuccessHUDToView:self.view message:@"我们已经收到您的举报信息，会尽快进行处理! 感谢您!"];
 }
 
 - (void)top
 {
-    [TTHUDView showNetworkToView:self.view customMessage:@"没有网了哦 亲~"];
+    [TTHelper showNetworkToView:self.view];
 }
 
 - (void)stop
 {
-    [TTHUDView hideLoadingFromView:self.view];
+    [TTHelper hideLoadingFromView:self.view];
 }
 
 - (void)loading
 {
-    [TTHUDView showLoadingToView:self.view];
+    [TTHelper showLoadingToView:self.view];
 }
 
 - (void)loadingDisable
 {
-    [TTHUDView showDisableLoadingToView:self.view];
+    [TTHelper showDisableLoadingToView:self.view];
 }
 
 

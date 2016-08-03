@@ -64,7 +64,7 @@
  */
 + (instancetype)showHUDToViewCenter:(UIView *)view message:(NSString *)message imageName:(NSString *)imageName
 {
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeBottomMessage message:message imageName:imageName];
+    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeCenterMessage message:message imageName:imageName];
     hud.frame      = view.bounds;
     [view tt_showHUD:hud type:TTHUDTypeBottom];
     return hud;

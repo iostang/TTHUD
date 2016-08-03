@@ -11,6 +11,7 @@
 		087194A81D4F64C900173DFD /* TTHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 087194A31D4F64C900173DFD /* TTHUDView.m */; };
 		087194A91D4F64C900173DFD /* UIImage+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 087194A51D4F64C900173DFD /* UIImage+GIF.m */; };
 		087194AA1D4F64C900173DFD /* UIView+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 087194A71D4F64C900173DFD /* UIView+HUD.m */; };
+		087ACFD71D51B86B006F9036 /* TTHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 087ACFD61D51B86B006F9036 /* TTHelper.m */; };
 		08B5781E1D5076C7002BE704 /* TTHUDResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 08B5781D1D5076C7002BE704 /* TTHUDResource.bundle */; };
 		825E0875E0CFD6686A2FBDF6 /* libPods-TTHUD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D88B9FB2532299BA9B372F24 /* libPods-TTHUD.a */; };
 		B4AD20D41D4B926F002B5F12 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B4AD20D31D4B926F002B5F12 /* main.m */; };
@@ -30,6 +31,8 @@
 		087194A51D4F64C900173DFD /* UIImage+GIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GIF.m"; sourceTree = "<group>"; };
 		087194A61D4F64C900173DFD /* UIView+HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HUD.h"; sourceTree = "<group>"; };
 		087194A71D4F64C900173DFD /* UIView+HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HUD.m"; sourceTree = "<group>"; };
+		087ACFD51D51B86B006F9036 /* TTHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTHelper.h; sourceTree = "<group>"; };
+		087ACFD61D51B86B006F9036 /* TTHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTHelper.m; sourceTree = "<group>"; };
 		08B5781D1D5076C7002BE704 /* TTHUDResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TTHUDResource.bundle; sourceTree = "<group>"; };
 		08B578291D50B9D3002BE704 /* TTHUDConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTHUDConfig.h; sourceTree = "<group>"; };
 		2429B4477368B830FCA23601 /* Pods-TTHUD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTHUD.release.xcconfig"; path = "Pods/Target Support Files/Pods-TTHUD/Pods-TTHUD.release.xcconfig"; sourceTree = "<group>"; };
@@ -119,6 +122,8 @@
 				B4AD20D91D4B926F002B5F12 /* ViewController.m */,
 				0871949E1D4F4DFF00173DFD /* SecondViewController.h */,
 				0871949F1D4F4DFF00173DFD /* SecondViewController.m */,
+				087ACFD51D51B86B006F9036 /* TTHelper.h */,
+				087ACFD61D51B86B006F9036 /* TTHelper.m */,
 				B4AD20DB1D4B926F002B5F12 /* Main.storyboard */,
 				B4AD20DE1D4B926F002B5F12 /* Assets.xcassets */,
 				B4AD20E01D4B926F002B5F12 /* LaunchScreen.storyboard */,
@@ -263,6 +268,7 @@
 				B4AD20DA1D4B926F002B5F12 /* ViewController.m in Sources */,
 				B4AD20D71D4B926F002B5F12 /* AppDelegate.m in Sources */,
 				087194A01D4F4DFF00173DFD /* SecondViewController.m in Sources */,
+				087ACFD71D51B86B006F9036 /* TTHelper.m in Sources */,
 				087194A81D4F64C900173DFD /* TTHUDView.m in Sources */,
 				B4AD20D41D4B926F002B5F12 /* main.m in Sources */,
 			);

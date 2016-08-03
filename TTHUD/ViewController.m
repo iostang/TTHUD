@@ -7,8 +7,8 @@
 //
 
 #import "ViewController.h"
-#import "TTHUDConfig.h"
-#import "TTHUDView.h"
+#import "TTHelper.h"
+
 
 
 static NSString * const kHUDTitle_SelectedBrand              = @"请选择品牌";
@@ -104,32 +104,32 @@ static NSString * const kHUDTitle_NetworkVeryBad             = @"网络有点慢
 
 - (void)bom
 {
-    [TTHUDView showHUDToViewBottom:self.view message:kHUDTitle_FocusSuccess imageName:kImageName_AddImage];
+    [TTHelper showRightHUDToViewBottom:self.view message:kHUDTitle_CommentSuccess];
 }
 
 - (void)top
 {
-    [TTHUDView showNetworkToView:self.view];
+    [TTHelper showNetworkToView:self.view];
 }
 
 - (void)center
 {
-//    [TTHUDView showHUDToViewCenter:self.view message:kHUDTitle_NoMoneyNoBB];
-//    [TTHUDView showSuccessHUDToView:self.view message:@"支付成功" imageName:kImageName_SuccessImage];
-    [TTHUDView showErrorHUDToView:self.view message:@"支付失败" imageName:kImageName_CenterError];
+    [TTHelper showHUDToViewCenter:self.view message:kHUDTitle_NoMoneyNoBB];
+    [TTHelper showSuccessHUDToView:self.view message:@"支付成功"];
+//    [TTHelper showErrorHUDToView:self.view message:@"支付失败"];
 }
 
 - (void)stop
 {
-    [TTHUDView hideLoadingFromView:self.view];
+    [TTHelper hideLoadingFromView:self.view];
 }
 - (void)loading
 {
-    [TTHUDView showLoadingToView:self.view];
+    [TTHelper showLoadingToView:self.view];
 }
 - (void)loadingDisable
 {
-    [TTHUDView showDisableLoadingToView:self.view];
+    [TTHelper showDisableLoadingToView:self.view];
 }
 
 - (void)didReceiveMemoryWarning {

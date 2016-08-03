@@ -20,19 +20,19 @@ static CGFloat    const kNetWorkVeryBadHeight = 41;
 static CGFloat    const kTextBottomMargin     = 118-49;//69
 
 /*label insets number*/
-static CGFloat const kNumber_InsetsNumber = 14;
+static CGFloat const kNumber_InsetsNumber     = 14;
 
 
 /*bundel and image name*/
-static NSString * const kBundelName             = @"TTHUDResource.bundle";
+static NSString * const kBundelName              = @"TTHUDResource.bundle";
 
-static NSString * const kImageName_AddImage     = @"inform_icon_add_normal@2x";
-static NSString * const kImageName_SuccessImage = @"inform_icon_success_normal@2x";
+static NSString * const kImageName_PlusImage     = @"inform_icon_add_normal@2x";
+static NSString * const kImageName_RightImage    = @"inform_icon_success_normal@2x";
 
 static NSString * const kImageName_CenterError   = @"inform_icon_center_defeat_normal@2x";
 static NSString * const kImageName_CenterSuccess = @"inform_icon_center_success_normal@2x";
 
-static NSString * const kImageName_LoadingImage = @"jiuailogo_loading";
+static NSString * const kImageName_LoadingImage  = @"jiuailogo_loading";
 
 
 #define kImage_CustomImage(name) \
