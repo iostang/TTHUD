@@ -31,7 +31,7 @@
 		087194A61D4F64C900173DFD /* UIView+HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HUD.h"; sourceTree = "<group>"; };
 		087194A71D4F64C900173DFD /* UIView+HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HUD.m"; sourceTree = "<group>"; };
 		08B5781D1D5076C7002BE704 /* TTHUDResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TTHUDResource.bundle; sourceTree = "<group>"; };
-		08B578281D509BA1002BE704 /* TTHUDConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TTHUDConfig.h; path = TTHUD/TTHUDConfig.h; sourceTree = SOURCE_ROOT; };
+		08B578291D50B9D3002BE704 /* TTHUDConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTHUDConfig.h; sourceTree = "<group>"; };
 		2429B4477368B830FCA23601 /* Pods-TTHUD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTHUD.release.xcconfig"; path = "Pods/Target Support Files/Pods-TTHUD/Pods-TTHUD.release.xcconfig"; sourceTree = "<group>"; };
 		44E264218B2504D1DEBCB508 /* Pods-TTHUD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTHUD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TTHUD/Pods-TTHUD.debug.xcconfig"; sourceTree = "<group>"; };
 		B4AD20CF1D4B926F002B5F12 /* TTHUD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TTHUD.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,7 +62,7 @@
 		087194A11D4F64C900173DFD /* TTHUD */ = {
 			isa = PBXGroup;
 			children = (
-				08B578281D509BA1002BE704 /* TTHUDConfig.h */,
+				08B578291D50B9D3002BE704 /* TTHUDConfig.h */,
 				087194A21D4F64C900173DFD /* TTHUDView.h */,
 				087194A31D4F64C900173DFD /* TTHUDView.m */,
 				087194A41D4F64C900173DFD /* UIImage+GIF.h */,

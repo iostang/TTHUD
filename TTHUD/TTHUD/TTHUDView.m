@@ -134,7 +134,7 @@
 {
     TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeLoadingMessage message:nil imageName:nil];
     hud.frame      = view.bounds;
-    [view tt_showHUD:hud type:TTHUDTypeLoading];
+    [view tt_showLoading:hud];
     return hud;
 }
 
@@ -146,7 +146,7 @@
     TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeLoadingMessage message:nil imageName:nil];
     hud.frame      = view.bounds;
     hud.userInteractionEnabled = YES;
-    [view tt_showHUD:hud type:TTHUDTypeLoading];
+    [view tt_showLoading:hud];
     return hud;
 }
 
@@ -172,6 +172,13 @@
     return hud;
 }
 
+/**
+ *  dismiss loading view
+ */
++ (BOOL)hideLoadingFromView:(UIView *)view
+{
+    return [TTHUDView tt_hideLoadingFromView:view];
+}
 
 #pragma mark - init
 

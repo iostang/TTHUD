@@ -24,7 +24,7 @@
 
 - (void)bom
 {
-    [TTHUDView showHUDToViewCenter:self.view message:kHUDTitle_ClearCaChe imageName:kImageName_SuccessImage];
+    [TTHUDView showHUDToViewCenter:self.view message:@"缓存清理成功" imageName:kImageName_SuccessImage];
 }
 
 - (void)center
@@ -37,17 +37,17 @@
     [TTHUDView showNetworkToView:self.view customMessage:@"没有网了哦 亲~"];
 }
 
-
 - (void)stop
 {
-    [TTHUDView hideLoadingHUDForView:self.view];
+    [TTHUDView hideLoadingFromView:self.view];
 }
 
 - (void)loading
 {
     [TTHUDView showLoadingToView:self.view];
 }
-- (void)loading1
+
+- (void)loadingDisable
 {
     [TTHUDView showDisableLoadingToView:self.view];
 }

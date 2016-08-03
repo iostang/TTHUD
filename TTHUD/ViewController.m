@@ -10,6 +10,21 @@
 #import "TTHUDConfig.h"
 #import "TTHUDView.h"
 
+
+static NSString * const kHUDTitle_SelectedBrand              = @"请选择品牌";
+static NSString * const kHUDTitle_SelectedGoodsSpecification = @"请选择商品属性规格";
+static NSString * const kHUDTitle_AddDetailDescription       = @"请添加详细描述";
+static NSString * const kHUDTitle_SelectedIsNew              = @"请选择是否全新";
+static NSString * const kHUDTitle_NoTitleNoCan               = @"没有标题怎么行";
+static NSString * const kHUDTitle_NoMoneyNoBB                = @"不能不谈价格哦";
+static NSString * const kHUDTitle_PostageCannotBeZero        = @"邮费不能为零";
+static NSString * const kHUDTitle_ClearCaChe                 = @"缓存清理成功";
+static NSString * const kHUDTitle_FocusSuccess               = @"关注成功";
+static NSString * const kHUDTitle_CommentSuccess             = @"添加评论成功";
+static NSString * const kHUDTitle_Loading                    = @"Loading";
+static NSString * const kHUDTitle_NetworkVeryBad             = @"网络有点慢，好心塞";
+
+
 @interface ViewController ()
 
 @end
@@ -65,7 +80,7 @@
         UIButton *btn =   [UIButton buttonWithType:UIButtonTypeCustom];
         btn.backgroundColor = [UIColor redColor];
         btn.frame = CGRectMake(200, 80, 50, 50);
-        [btn addTarget:self action:@selector(loading1) forControlEvents:UIControlEventTouchUpInside];
+        [btn addTarget:self action:@selector(loadingDisable) forControlEvents:UIControlEventTouchUpInside];
         [btn setTitle:@"Load" forState:UIControlStateNormal];
         btn;
     });
@@ -106,13 +121,13 @@
 
 - (void)stop
 {
-    [TTHUDView hideLoadingHUDForView:self.view];
+    [TTHUDView hideLoadingFromView:self.view];
 }
 - (void)loading
 {
     [TTHUDView showLoadingToView:self.view];
 }
-- (void)loading1
+- (void)loadingDisable
 {
     [TTHUDView showDisableLoadingToView:self.view];
 }

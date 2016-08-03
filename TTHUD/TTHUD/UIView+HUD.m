@@ -121,7 +121,7 @@ static NSString * classAddress = @"";
 /**
  *  这个隐藏方法只针对于Loading
  */
-+ (BOOL)hideLoadingHUDForView:(UIView *)view
++ (BOOL)tt_hideLoadingFromView:(UIView *)view
 {
     TTHUDView *hud = [self HUDForView:view];
     

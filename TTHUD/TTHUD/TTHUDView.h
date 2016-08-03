@@ -87,6 +87,9 @@ typedef NS_ENUM(NSInteger,TTHUDShowType) {
  */
 + (instancetype)showNetworkToView:(UIView *)view customMessage:(NSString *)customMessage;
 
-
+/**
+ *  dismiss loading view
+ */
++ (BOOL)hideLoadingFromView:(UIView *)view;
 
 @end
