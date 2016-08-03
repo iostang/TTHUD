@@ -114,7 +114,8 @@ static NSString * const kHUDTitle_NetworkVeryBad             = @"网络有点慢
 
 - (void)center
 {
-    [TTHelper showHUDToViewCenter:self.view message:kHUDTitle_NoMoneyNoBB];
+    [TTHelper hideLoadingFromView:self.view];
+//    [TTHelper showHUDToViewCenter:self.view message:kHUDTitle_NoMoneyNoBB];
     [TTHelper showSuccessHUDToView:self.view message:@"支付成功"];
 //    [TTHelper showErrorHUDToView:self.view message:@"支付失败"];
 }
