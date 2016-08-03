@@ -37,8 +37,8 @@ static NSString * classAddress = @"";
 {
     hudView.alpha = 0;
     
-    /* 使用self.superview的内存地址来拼接type做唯一标示 当key使用 */
-    classAddress      = [NSString stringWithFormat:@"%p",self.superview];
+    /* 使用self的内存地址来拼接type做唯一标示 当key使用 */
+    classAddress      = [NSString stringWithFormat:@"%p",self];
     NSString *typeKey = [NSString stringWithFormat:@"%@_%ld",classAddress,type];
 
     
@@ -87,7 +87,7 @@ static NSString * classAddress = @"";
 {
     loadingView.alpha = 0;
     
-    classAddress      = [NSString stringWithFormat:@"%p",self.superview];
+    classAddress      = [NSString stringWithFormat:@"%p",self];
     NSString *typeKey = [NSString stringWithFormat:@"%@_%ld",classAddress,TTHUDTypeLoading];
     
     /*倒序数组 方便便利*/
@@ -146,7 +146,7 @@ static NSString * classAddress = @"";
 + (TTHUDView *)HUDForView:(UIView *)view
 {
     /* 隐藏式需要给classaddress重新赋值 */
-    classAddress      = [NSString stringWithFormat:@"%p",view.superview];
+    classAddress      = [NSString stringWithFormat:@"%p",view];
     NSString *typeKey = [NSString stringWithFormat:@"%@_%ld",classAddress,TTHUDTypeLoading];
     
     /*倒序数组 方便便利*/
