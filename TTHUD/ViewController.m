@@ -17,7 +17,7 @@ static NSString * const kHUDTitle_AddDetailDescription       = @"请添加详细
 static NSString * const kHUDTitle_SelectedIsNew              = @"请选择是否全新";
 static NSString * const kHUDTitle_NoTitleNoCan               = @"没有标题怎么行";
 static NSString * const kHUDTitle_NoMoneyNoBB                = @"不能不谈价格哦";
-static NSString * const kHUDTitle_PostageCannotBeZero        = @"邮费不能为零";
+static NSString * const kHUDTitle_PostageCannotBeZero        = @"邮费不能为零哦";
 static NSString * const kHUDTitle_ClearCaChe                 = @"缓存清理成功";
 static NSString * const kHUDTitle_FocusSuccess               = @"关注成功";
 static NSString * const kHUDTitle_CommentSuccess             = @"添加评论成功";
@@ -116,7 +116,7 @@ static NSString * const kHUDTitle_NetworkVeryBad             = @"网络有点慢
 {
 //    [TTHUDView showHUDToViewCenter:self.view message:kHUDTitle_NoMoneyNoBB];
 //    [TTHUDView showSuccessHUDToView:self.view message:@"支付成功" imageName:kImageName_SuccessImage];
-    [TTHUDView showErrorHUDToView:self.view message:@"支付失败" imageName:kImageName_AddImage];
+    [TTHUDView showErrorHUDToView:self.view message:@"支付失败" imageName:kImageName_CenterError];
 }
 
 - (void)stop

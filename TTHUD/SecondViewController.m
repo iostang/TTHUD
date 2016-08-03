@@ -29,7 +29,7 @@
 
 - (void)center
 {
-    [TTHUDView showSuccessHUDToView:self.view message:@"我们已经收到您的举报信息，会尽快进行处理! 感谢您!" imageName:kImageName_SuccessImage];
+    [TTHUDView showSuccessHUDToView:self.view message:@"我们已经收到您的举报信息，会尽快进行处理! 感谢您!" imageName:kImageName_CenterSuccess];
 }
 
 - (void)top

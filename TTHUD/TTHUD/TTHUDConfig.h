@@ -25,8 +25,13 @@ static CGFloat const kNumber_InsetsNumber = 14;
 
 /*bundel and image name*/
 static NSString * const kBundelName             = @"TTHUDResource.bundle";
+
 static NSString * const kImageName_AddImage     = @"inform_icon_add_normal@2x";
 static NSString * const kImageName_SuccessImage = @"inform_icon_success_normal@2x";
+
+static NSString * const kImageName_CenterError   = @"inform_icon_center_defeat_normal@2x";
+static NSString * const kImageName_CenterSuccess = @"inform_icon_center_success_normal@2x";
+
 static NSString * const kImageName_LoadingImage = @"jiuailogo_loading";
 
 
