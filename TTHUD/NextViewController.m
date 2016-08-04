@@ -1,53 +1,52 @@
 //
-//  SecondViewController.m
+//  NextViewController.m
 //  TTHUD
 //
-//  Created by TangChi on 16/8/1.
+//  Created by TangChi on 16/8/4.
 //  Copyright © 2016年 TonyTong. All rights reserved.
 //
 
-#import "SecondViewController.h"
-#import "TTHelper.h"
 #import "NextViewController.h"
+#import "TTHelper.h"
+#import "TTHUDConfig.h"
+#import "UIImage+Gif.h"
 
-@interface SecondViewController ()
+@interface NextViewController ()
 
 @end
 
-@implementation SecondViewController
+@implementation NextViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.hidden = YES;
 }
-
 - (void)bom
 {
-    [TTHelper showPlusHUDToViewBottom:self.view message:@"关注成功"];
-}
-
-- (void)center
-{
-    [TTHelper showSuccessHUDToView:self.view message:@"我们已经收到您的举报信息，会尽快进行处理! 感谢您!"];
+    [TTHelper showRightHUDToViewBottom:self.view message:@"添加评论成功" position:CGPointMake(0, 0)];
 }
 
 - (void)top
 {
-    [TTHelper showNetworkToView:self.view position:(CGPoint){0,64}];
+    [TTHelper showNetworkToView:self.view position:CGPointMake(0, 64)];
+}
+
+- (void)center
+{
+    [TTHelper hideLoadingFromView:self.view];
+    [TTHelper showHUDToViewCenter:self.view message:@"添加评论成功" position:CGPointMake(0, 150)];
+    [TTHelper showSuccessHUDToView:self.view message:@"支付成功" position:CGPointMake(0, 0)];
+//    [TTHelper showErrorHUDToView:self.view message:@"支付失败" position:CGPointMake(0, 150)];
 }
 
 - (void)stop
 {
     [TTHelper hideLoadingFromView:self.view];
 }
-
 - (void)loading
 {
-    [TTHelper showLoadingToView:self.view position:(CGPoint){0,0}];
+    [TTHelper showLoadingToView:self.view];
 }
-
 - (void)loadingDisable
 {
     [TTHelper showDisableLoadingToView:self.view];
@@ -56,9 +55,10 @@
 - (void)next
 {
     NextViewController *next = [NextViewController new];
-
-    [self presentViewController:next animated:YES completion:nil];
+    next.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:next animated:YES];
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

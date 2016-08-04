@@ -13,15 +13,8 @@
 static NSUInteger const kTitleLabelMaxLine           = 10;
 static NSUInteger const kTitleLabelMaxLine_CenterHUD = 10;
 
-/*文本背景高度*/
-static CGFloat    const kNetWorkVeryBadHeight = 41;
-
-/*Bottom的偏移量 118是设置的高度 需要减去tabbar高度*/
-static CGFloat    const kTextBottomMargin     = 118-49;//69
-
 /*label insets number*/
-static CGFloat const kNumber_InsetsNumber     = 14;
-
+static CGFloat const kNumber_InsetsNumber            = 14;
 
 /*bundel and image name*/
 static NSString * const kBundelName              = @"TTHUDResource.bundle";
@@ -52,12 +45,6 @@ image_Loading; \
 })
 
 
-
-
-/* label max width */
-#define  kTitleLabel_PreferredMaxLayoutWidth   CGRectGetWidth([UIScreen mainScreen].bounds)-100
-#define  kTitleLabel_PreferredMaxLayoutWidth_CenterHUD   80
-
 #define kColor_TitleLabelBackground_BlackColor ([[UIColor blackColor] colorWithAlphaComponent:0.8])
 #define kColor_TitleLabelBackground_RedColor   ([UIColor colorWithRed:234.0f/255.0f green:65.0f/255.0f blue:65.0f/255.0f alpha:0.860])
 #define kColor_TitleLabelTextColor             ([UIColor whiteColor])
@@ -68,8 +55,37 @@ image_Loading; \
 #define kTitleLabelBorderEdgeInsets            (UIEdgeInsetsMake(-kNumber_InsetsNumber, -kNumber_InsetsNumber, -kNumber_InsetsNumber, -kNumber_InsetsNumber))
 #define kTitleLabelTextEdgeInsets              (UIEdgeInsetsMake(kNumber_InsetsNumber, kNumber_InsetsNumber, kNumber_InsetsNumber, kNumber_InsetsNumber))
 
-#define kSize_LoadingSize                      ((CGSize){40,40})
-#define kSize_SuccessHUDSize                   ((CGSize){100,100})
+/** UIApplicatoin **/
+#define kApplication [UIApplication sharedApplication]
 
+/** UIApplication Delegate **/
+#define kAppDelegate [(AppDelegate*)kApplication  delegate]
+
+/** UIApplication KeyWindow **/
+#define kAppKeyWindow [kApplication keyWindow]
+
+#define kWidth_ScreenWidth ([UIScreen mainScreen].bounds.size.width)
+#define kHeight_ScreenHeight ([UIScreen mainScreen].bounds.size.height)
+#define kHeight_NavigationBarHeightAndStatusBarHeight (kHeight_NavigationBarHeight + kHeight_StatusBarHeight)
+
+#define kHeight_NavigationBarHeight  44
+#define kHeight_StatusBarHeight      20
+#define kHeight_TabBarHeight         49
+
+/* Bottom状态下距离底部的默认高度 */
+#define kHeight_TextBottomMargin     118
+
+/* 没网时文本高度*/
+#define kHeight_NetWorkVeryBadHeight 41
+
+/* label max width */
+#define  kTitleLabel_PreferredMaxLayoutWidth           (kWidth_ScreenWidth-100)
+#define  kTitleLabel_PreferredMaxLayoutWidth_CenterHUD 90
+
+/* Loading size*/
+#define kSize_LoadingSize     ((CGSize){40,40})
+
+/* HUD size */
+#define kSize_SuccessHUDSize  ((CGSize){110,110})
 
 #endif /* TextHeader_h */

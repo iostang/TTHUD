@@ -26,6 +26,7 @@ typedef NS_ENUM(NSInteger,TTHUDShowType) {
 
 @interface TTHUDView : UIView
 
+@property (nonatomic, assign) CGPoint position;
 
 /**
  *  中间文本 细条
@@ -91,5 +92,21 @@ typedef NS_ENUM(NSInteger,TTHUDShowType) {
  *  dismiss loading view
  */
 + (BOOL)hideLoadingFromView:(UIView *)view;
+
+
+#pragma mark - 自定义位置
+
++ (instancetype)showHUDToViewCenter:(UIView *)view message:(NSString *)message position:(CGPoint)position;
++ (instancetype)showHUDToViewCenter:(UIView *)view message:(NSString *)message  imageName:(NSString *)imageName position:(CGPoint)position;
++ (instancetype)showHUDToViewBottom:(UIView *)view message:(NSString *)message position:(CGPoint)position;
++ (instancetype)showHUDToViewBottom:(UIView *)view message:(NSString *)message imageName:(NSString *)imageName position:(CGPoint)position;
++ (instancetype)showSuccessHUDToView:(UIView *)view message:(NSString *)message position:(CGPoint)position;
++ (instancetype)showSuccessHUDToView:(UIView *)view message:(NSString *)message imageName:(NSString *)imageName position:(CGPoint)position;
++ (instancetype)showErrorHUDToView:(UIView *)view message:(NSString *)message position:(CGPoint)position;
++ (instancetype)showErrorHUDToView:(UIView *)view message:(NSString *)message imageName:(NSString *)imageName position:(CGPoint)position;
++ (instancetype)showLoadingToView:(UIView *)view position:(CGPoint)position;
++ (instancetype)showDisableLoadingToView:(UIView *)view position:(CGPoint)position;
++ (instancetype)showNetworkToView:(UIView *)view position:(CGPoint)position;
++ (instancetype)showNetworkToView:(UIView *)view customMessage:(NSString *)customMessage position:(CGPoint)position;
 
 @end

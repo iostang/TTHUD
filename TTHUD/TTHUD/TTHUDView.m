@@ -10,6 +10,7 @@
 #import <Masonry/Masonry.h>
 #import "UIImage+GIF.h"
 #import "TTHUDConfig.h"
+#import "UIView+HUD.h"
 
 @interface TTLabel : UILabel
 
@@ -56,7 +57,7 @@
  */
 + (instancetype)showHUDToViewCenter:(UIView *)view message:(NSString *)message
 {
-  return [self showHUDToViewCenter:view message:message imageName:nil];
+    return [self showHUDToViewCenter:view message:message imageName:nil];
 }
 
 /**
@@ -64,8 +65,7 @@
  */
 + (instancetype)showHUDToViewCenter:(UIView *)view message:(NSString *)message imageName:(NSString *)imageName
 {
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeCenterMessage message:message imageName:imageName];
-    hud.frame      = view.bounds;
+    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeCenterMessage message:message imageName:imageName fromView:view position:CGPointZero];
     [view tt_showHUD:hud type:TTHUDTypeBottom];
     return hud;
 }
@@ -75,7 +75,7 @@
  */
 + (instancetype)showHUDToViewBottom:(UIView *)view message:(NSString *)message
 {
-  return [self showHUDToViewBottom:view message:message imageName:nil];
+    return [self showHUDToViewBottom:view message:message imageName:nil];
 }
 
 /**
@@ -83,8 +83,7 @@
  */
 + (instancetype)showHUDToViewBottom:(UIView *)view message:(NSString *)message imageName:(NSString *)imageName
 {
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeBottomMessage message:message imageName:imageName];
-    hud.frame      = view.bounds;
+    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeBottomMessage message:message imageName:imageName fromView:view position:CGPointMake(0, -kHeight_TextBottomMargin)];
     [view tt_showHUD:hud type:TTHUDTypeBottom];
     return hud;
 }
@@ -94,7 +93,7 @@
  */
 + (instancetype)showSuccessHUDToView:(UIView *)view message:(NSString *)message
 {
-    return [self showSuccessHUDToView:view message:message imageName:nil];
+    return [self showSuccessHUDToView:view message:message imageName:kImageName_CenterSuccess];
 }
 
 /**
@@ -102,8 +101,7 @@
  */
 + (instancetype)showSuccessHUDToView:(UIView *)view message:(NSString *)message imageName:(NSString *)imageName
 {
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeCenterSuccessMessage message:message imageName:imageName];
-    hud.frame      = view.bounds;
+    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeCenterSuccessMessage message:message imageName:imageName fromView:view position:CGPointZero];
     [view tt_showHUD:hud type:TTHUDTypeCenter];
     return hud;
 }
@@ -113,7 +111,7 @@
  */
 + (instancetype)showErrorHUDToView:(UIView *)view message:(NSString *)message
 {
-    return [self showErrorHUDToView:view message:message imageName:nil];
+    return [self showErrorHUDToView:view message:message imageName:kImageName_CenterError];
 }
 
 /**
@@ -121,8 +119,7 @@
  */
 + (instancetype)showErrorHUDToView:(UIView *)view message:(NSString *)message imageName:(NSString *)imageName
 {
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeCenterErrorMessage message:message imageName:imageName];
-    hud.frame      = view.bounds;
+    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeCenterErrorMessage message:message imageName:imageName fromView:view position:CGPointZero];
     [view tt_showHUD:hud type:TTHUDTypeCenter];
     return hud;
 }
@@ -132,21 +129,19 @@
  */
 + (instancetype)showLoadingToView:(UIView *)view
 {
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeLoadingMessage message:nil imageName:nil];
-    hud.frame      = view.bounds;
+    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeLoadingMessage message:nil imageName:nil fromView:view position:CGPointZero];
     [view tt_showLoading:hud];
     return hud;
 }
+
 
 /**
  * 中间显示Loading的gif图  禁止下层级交互 圆形
  */
 + (instancetype)showDisableLoadingToView:(UIView *)view
 {
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeLoadingMessage message:nil imageName:nil];
-    hud.frame      = view.bounds;
+    TTHUDView *hud = [self showLoadingToView:view];
     hud.userInteractionEnabled = YES;
-    [view tt_showLoading:hud];
     return hud;
 }
 
@@ -155,8 +150,7 @@
  */
 + (instancetype)showNetworkToView:(UIView *)view
 {
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeNetworkVeryBadMessage message:@"网络有点慢，好心塞" imageName:nil];
-    hud.frame      = view.bounds;
+    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeNetworkVeryBadMessage message:@"网络有点慢，好心塞" imageName:nil fromView:view position:CGPointMake(0, kHeight_NavigationBarHeightAndStatusBarHeight)];
     [view tt_showHUD:hud type:TTHUDTypeTop];
     return hud;
 }
@@ -166,11 +160,12 @@
  */
 + (instancetype)showNetworkToView:(UIView *)view customMessage:(NSString *)customMessage
 {
-    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeNetworkVeryBadMessage message:customMessage imageName:nil];
-    hud.frame      = view.bounds;
+    TTHUDView *hud = [[TTHUDView alloc]initWithType:TTHUDTitleTypeNetworkVeryBadMessage message:customMessage imageName:nil fromView:view position:CGPointMake(0, kHeight_NavigationBarHeightAndStatusBarHeight)];
     [view tt_showHUD:hud type:TTHUDTypeTop];
     return hud;
 }
+
+#pragma mark - Hide Loading
 
 /**
  *  dismiss loading view
@@ -180,16 +175,150 @@
     return [TTHUDView tt_hideLoadingFromView:view];
 }
 
+#pragma mark - 自定义HUD偏移量
+
+/**
+ *  中间文本 或者文本和图片 自定义位置 细条
+ */
++ (instancetype)showHUDToViewCenter:(UIView *)view message:(NSString *)message position:(CGPoint)position
+{
+    TTHUDView *hud = [self showHUDToViewCenter:view message:message imageName:nil];
+    hud.position = position;
+    return hud;
+}
+/**
+ *  中间文本和图片  自定义位置 细条
+ */
++ (instancetype)showHUDToViewCenter:(UIView *)view message:(NSString *)message  imageName:(NSString *)imageName position:(CGPoint)position
+{
+    TTHUDView *hud = [self showHUDToViewCenter:view message:message imageName:imageName];
+    hud.position = position;
+    return hud;
+}
+
+
+/**
+ *  底部文本 或者文本和图片 自定义位置 细条
+ */
++ (instancetype)showHUDToViewBottom:(UIView *)view message:(NSString *)message position:(CGPoint)position
+{
+    TTHUDView *hud =  [self showHUDToViewBottom:view message:message imageName:nil];
+    hud.position = position;
+    return hud;
+}
+/**
+ *  底部文本和图片 自定义位置 细条
+ */
++ (instancetype)showHUDToViewBottom:(UIView *)view message:(NSString *)message imageName:(NSString *)imageName position:(CGPoint)position
+{
+    TTHUDView *hud =  [self showHUDToViewBottom:view message:message imageName:imageName];
+    hud.position = position;
+    return hud;
+}
+
+/**
+ * 中间显示文本+成功图片 自定义位置 大方块
+ */
++ (instancetype)showSuccessHUDToView:(UIView *)view message:(NSString *)message position:(CGPoint)position
+{
+    TTHUDView *hud = [self showSuccessHUDToView:view message:message];
+    hud.position = position;
+    return hud;
+}
+/**
+ * 中间显示文本+自定义成功图片 自定义位置 大方块
+ */
++ (instancetype)showSuccessHUDToView:(UIView *)view message:(NSString *)message imageName:(NSString *)imageName position:(CGPoint)position
+{
+    TTHUDView *hud = [self showSuccessHUDToView:view message:message imageName:imageName];
+    hud.position = position;
+    return hud;
+}
+
+/**
+ * 中间显示文本+失败图片 自定义位置 大方块
+ */
++ (instancetype)showErrorHUDToView:(UIView *)view message:(NSString *)message position:(CGPoint)position
+{
+    TTHUDView *hud = [self showErrorHUDToView:view message:message];
+    hud.position = position;
+    return hud;
+}
+
+
+/**
+ * 中间显示文本+自定义失败图片 自定义位置 大方块
+ */
++ (instancetype)showErrorHUDToView:(UIView *)view message:(NSString *)message imageName:(NSString *)imageName position:(CGPoint)position
+{
+    TTHUDView *hud = [self showErrorHUDToView:view message:message imageName:imageName];
+    hud.position = position;
+    return hud;
+}
+
+
+/**
+ * 中间显示Loading的gif图 自定义位置 圆形
+ */
++ (instancetype)showLoadingToView:(UIView *)view position:(CGPoint)position
+{
+    TTHUDView *hud = [self showLoadingToView:view];
+    hud.position = position;
+    return hud;
+}
+
+/**
+ * 中间显示Loading的gif图  禁止下层级交互 自定义位置 圆形
+ */
++ (instancetype)showDisableLoadingToView:(UIView *)view position:(CGPoint)position
+{
+    TTHUDView *hud = [self showDisableLoadingToView:view];
+    hud.position = position;
+    return hud;
+}
+
+/**
+ * 顶部显示纯文本 背景色为红色  自定义位置 细条
+ */
+
++ (instancetype)showNetworkToView:(UIView *)view position:(CGPoint)position
+{
+    TTHUDView *hud = [self showNetworkToView:view];
+    hud.position = position;
+    
+    return hud;
+}
+
+
+/**
+ * 顶部显示自定义纯文本 背景色为红色  自定义位置 细条
+ */
+
++ (instancetype)showNetworkToView:(UIView *)view customMessage:(NSString *)customMessage position:(CGPoint)position
+{
+    TTHUDView *hud = [self showNetworkToView:view customMessage:customMessage];
+    hud.position = position;
+    return hud;
+}
+
+
+
 #pragma mark - init
 
-- (instancetype)initWithType:(TTHUDShowType)type message:(NSString *)message imageName:(NSString *)imageName
+- (instancetype)initWithType:(TTHUDShowType)type
+                     message:(NSString *)message
+                   imageName:(NSString *)imageName
+                    fromView:(UIView *)fromView
+                    position:(CGPoint)position
 {
     self = [super init];
     if (self) {
         self.imageName = imageName;
         self.message = message;
         self.type = type;
-        
+        //        self.frame = (CGRect){[self convertPoint:kAppKeyWindow.frame.origin toView:fromView],kWidth_ScreenWidth,kHeight_ScreenHeight};
+        self.frame = [kAppKeyWindow convertRect:kAppKeyWindow.frame toView:fromView];
+        self.position = position;
         [self config];
         
     }
@@ -200,20 +329,20 @@
 {
     self.userInteractionEnabled = NO;
     [self setupViews];
+    [self setNeedsUpdateConstraints];
+    
 }
 
 - (void)setupViews
 {
+    
     switch (self.type) {
         case TTHUDTitleTypeCenterMessage: {
             
             [self labelTitleAttributedText];
             
             [self addSubview:self.titleLabel];
-
-            [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.center.mas_equalTo(self);
-            }];
+            
         }
             break;
             
@@ -222,11 +351,7 @@
             [self labelTitleAttributedText];
             
             [self addSubview:self.titleLabel];
-
-            [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.bottom.mas_equalTo(self).offset(-kTextBottomMargin);
-                make.centerX.mas_equalTo(self);
-            }];
+            
         }
             break;
             
@@ -236,20 +361,13 @@
             [self labelTitleAttributedText];
             [self addSubview:self.titleLabel];
             
-            [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.center.mas_equalTo(self);
-            }];
         }
             break;
             
         case TTHUDTitleTypeLoadingMessage: {
             
             [self addSubview:self.loadingImageView];
-
-            [self.loadingImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.center.mas_equalTo(self);
-            }];
-
+            
         }
             break;
             
@@ -260,46 +378,70 @@
             self.titleLabel.text                = self.message;
             self.titleLabel.font                = kFont_TitleLabelFont_NetworkVeryBad;
             self.titleLabel.backgroundColor     = kColor_TitleLabelBackground_RedColor;
-
+            
             [self addSubview:self.titleLabel];
-
-            [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.centerX.left.right.mas_equalTo(self);
-                make.height.mas_equalTo(kNetWorkVeryBadHeight);
-                make.top.mas_equalTo(self).offset(-kNetWorkVeryBadHeight);
-            }];
-
+            
         }
             break;
     }
     
-    [self tt_updateConstraints];
 }
 
-- (void)tt_updateConstraints
+- (void)updateConstraints
 {
+    
     switch (self.type) {
-        case TTHUDTitleTypeCenterMessage:
-        case TTHUDTitleTypeBottomMessage:
+        case TTHUDTitleTypeCenterMessage: {
+            
+            [self.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.center.mas_equalTo(self).centerOffset(self.position);
+            }];
+            
+        }
+            break;
+            
+        case TTHUDTitleTypeBottomMessage: {
+            
+            [self.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.centerX.mas_equalTo(self).offset(self.position.x);
+                make.bottom.mas_equalTo(self).offset(self.position.y);
+            }];
+            
+        }
+            break;
+            
         case TTHUDTitleTypeCenterSuccessMessage:
-        case TTHUDTitleTypeCenterErrorMessage:
+        case TTHUDTitleTypeCenterErrorMessage: {
+            
+            [self.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.center.mas_equalTo(self).centerOffset(self.position);
+            }];
+        }
+            break;
+            
         case TTHUDTitleTypeLoadingMessage: {
+            
+            [self.loadingImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.center.mas_equalTo(self).centerOffset(self.position);
+            }];
+            
         }
             break;
             
         case TTHUDTitleTypeNetworkVeryBadMessage: {
             
-            [self.titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.top.mas_equalTo(self);
-            }];
-            [UIView animateWithDuration:0.25 animations:^{
-                [self layoutIfNeeded];
+            [self.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.left.right.mas_equalTo(self);
+                make.centerX.mas_equalTo(self.position.x);
+                make.height.mas_equalTo(kHeight_NetWorkVeryBadHeight);
+                make.top.mas_equalTo(self).offset(self.position.y);
             }];
             
         }
             break;
     }
-   
+    
+    [super updateConstraints];
 }
 
 #pragma mark - 根据枚举类型返回对应的字符串
@@ -310,7 +452,7 @@
 {
     // 创建一个富文本
     NSMutableAttributedString *attri = [[NSMutableAttributedString alloc] initWithString:self.message];
-
+    
     if (self.imageName) {
         
         //添加图片
@@ -320,7 +462,7 @@
         
         // 创建带有图片的富文本
         NSAttributedString *string = [NSAttributedString attributedStringWithAttachment:attch];
-
+        
         NSAttributedString *place;
         if (self.type == TTHUDTitleTypeCenterSuccessMessage || self.type == TTHUDTitleTypeCenterErrorMessage) {
             place = [[NSAttributedString alloc] initWithString:@"\n\n"];
