@@ -8,9 +8,14 @@
 
 #import "ViewController.h"
 #import "TTHelper.h"
-#import "NextViewController.h"
 
-
+#define kSuppressPerformSelectorLeakWarning(Stuff) \
+do { \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"") \
+Stuff; \
+_Pragma("clang diagnostic pop") \
+} while (0)
 
 static NSString * const kHUDTitle_SelectedBrand              = @"请选择品牌";
 static NSString * const kHUDTitle_SelectedGoodsSpecification = @"请选择商品属性规格";
@@ -25,131 +30,102 @@ static NSString * const kHUDTitle_CommentSuccess             = @"添加评论成
 static NSString * const kHUDTitle_Loading                    = @"Loading";
 static NSString * const kHUDTitle_NetworkVeryBad             = @"网络有点慢，好心塞";
 
+static NSString *const kCellIdentifier = @"cellIdentifier";
 
-@interface ViewController ()
+@interface ViewController () <UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, strong) NSMutableArray *dataSource;
 
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     
 
     self.navigationController.navigationBar.translucent = NO;
     self.tabBarController.tabBar.translucent = NO;
     self.view.backgroundColor = [UIColor colorWithRed:0.513 green:0.652 blue:1.000 alpha:1.000];
-    self.navigationController.navigationBar.hidden = NO;
-    UIButton *btnTop1 = ({
-        UIButton *btn =  [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.backgroundColor = [UIColor redColor];
-        btn.frame = CGRectMake(20, 20, 50, 50);
-        [btn addTarget:self action:@selector(top) forControlEvents:UIControlEventTouchUpInside];
-        [btn setTitle:@"Top" forState:UIControlStateNormal];
-        btn;
-    });
+ 
+    
+    self.dataSource = @[@"network",@"center",@"bottom",@"loading",@"success",@"error",@"custom_bottom",@"stop"].mutableCopy;
     
     
-    UIButton *btnBom = ({
-        UIButton *btn =   [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.backgroundColor = [UIColor redColor];
-        btn.frame = CGRectMake(120, 20, 50, 50);
-        [btn addTarget:self action:@selector(center) forControlEvents:UIControlEventTouchUpInside];
-        [btn setTitle:@"Cen" forState:UIControlStateNormal];
-        btn;
-    });
+    UITableView *tableView = [UITableView new];
+    tableView.frame = self.view.bounds;
+    tableView.dataSource = self;
+    tableView.delegate = self;
+    [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellIdentifier];
+    tableView.tableFooterView = [UIView new];
+    [self.view addSubview:tableView];
     
-    UIButton *btnTop2 = ({
-        UIButton *btn =   [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.backgroundColor = [UIColor redColor];
-        btn.frame = CGRectMake(20, 80, 50, 50);
-        [btn addTarget:self action:@selector(bom) forControlEvents:UIControlEventTouchUpInside];
-        [btn setTitle:@"Bom" forState:UIControlStateNormal];
-        btn;
-    });
     
-    UIButton *btnTop3 = ({
-        UIButton *btn =   [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.backgroundColor = [UIColor redColor];
-        btn.frame = CGRectMake(120, 80, 50, 50);
-        [btn addTarget:self action:@selector(loading) forControlEvents:UIControlEventTouchUpInside];
-        [btn setTitle:@"Load" forState:UIControlStateNormal];
-        btn;
-    });
-
-    UIButton *btnTop5 = ({
-        UIButton *btn =   [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.backgroundColor = [UIColor redColor];
-        btn.frame = CGRectMake(200, 80, 50, 50);
-        [btn addTarget:self action:@selector(loadingDisable) forControlEvents:UIControlEventTouchUpInside];
-        [btn setTitle:@"Load" forState:UIControlStateNormal];
-        btn;
-    });
-    
-    UIButton *btnTop4 = ({
-        UIButton *btn =   [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.backgroundColor = [UIColor colorWithRed:0.621 green:1.000 blue:0.604 alpha:1.000];
-        btn.frame = CGRectMake(20, 180, 50, 50);
-        [btn addTarget:self action:@selector(stop) forControlEvents:UIControlEventTouchUpInside];
-        [btn setTitle:@"Stop" forState:UIControlStateNormal];
-        btn;
-    });
-  
-    UIButton *btnNext = ({
-        UIButton *btn =   [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.backgroundColor = [UIColor colorWithRed:0.621 green:1.000 blue:0.604 alpha:1.000];
-        btn.frame = CGRectMake(120, 180, 50, 50);
-        [btn addTarget:self action:@selector(next) forControlEvents:UIControlEventTouchUpInside];
-        [btn setTitle:@"Next" forState:UIControlStateNormal];
-        btn;
-    });
-    
-    [self.view addSubview:btnTop1];
-    [self.view addSubview:btnBom];
-    [self.view addSubview:btnTop2];
-    [self.view addSubview:btnTop3];
-    [self.view addSubview:btnTop4];
-    [self.view addSubview:btnTop5];
-    
-    [self.view addSubview:btnNext];
 }
 
-- (void)bom
+#pragma mark - UITableView Datasource
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    [TTHelper showRightHUDToViewBottom:self.view message:kHUDTitle_CommentSuccess position:CGPointMake(0, 0)];
+    return self.dataSource.count;
 }
 
-- (void)top
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
+    cell.textLabel.text = self.dataSource[indexPath.row];
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   kSuppressPerformSelectorLeakWarning([self performSelector:NSSelectorFromString(self.dataSource[indexPath.row])]);
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+
+- (void)bottom
+{
+    [TTHelper showRightHUDToViewBottom:self.view message:kHUDTitle_CommentSuccess];
+}
+
+- (void)network
 {
     [TTHelper showNetworkToView:self.view];
 }
 
 - (void)center
 {
-    [TTHelper hideLoadingFromView:self.view];
-    [TTHelper showHUDToViewCenter:self.view message:kHUDTitle_NoMoneyNoBB position:CGPointMake(0, 0)];
-//    [TTHelper showSuccessHUDToView:self.view message:@"支付成功" position:CGPointMake(0, 50)];
-//    [TTHelper showErrorHUDToView:self.view message:@"支付失败" position:CGPointMake(0, 150)];
+    [TTHelper showHUDToViewCenter:self.view message:kHUDTitle_NoMoneyNoBB];
+}
+
+- (void)success
+{
+    [TTHelper showSuccessHUDToView:self.view message:@"支付成功"];
+}
+
+- (void)error
+{
+    [TTHelper showErrorHUDToView:self.view message:@"支付失败"];
 }
 
 - (void)stop
 {
     [TTHelper hideLoadingFromView:self.view];
 }
+
 - (void)loading
 {
     [TTHelper showLoadingToView:self.view];
 }
-- (void)loadingDisable
-{
-    [TTHelper showDisableLoadingToView:self.view];
-}
 
-- (void)next
+- (void)custom_bottom
 {
-    NextViewController *next = [NextViewController new];
-    next.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:next animated:YES];
+    [TTHelper showHUDToViewBottom:self.view message:@"自定义Bottom位置" position:(CGPoint){50,-220}];
 }
 
 - (void)didReceiveMemoryWarning {

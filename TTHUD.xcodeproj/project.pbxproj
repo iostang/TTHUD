@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		08522BB11D52F17300A786D6 /* NextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08522BB01D52F17300A786D6 /* NextViewController.m */; };
-		087194A01D4F4DFF00173DFD /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0871949F1D4F4DFF00173DFD /* SecondViewController.m */; };
 		087194A81D4F64C900173DFD /* TTHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 087194A31D4F64C900173DFD /* TTHUDView.m */; };
 		087194A91D4F64C900173DFD /* UIImage+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 087194A51D4F64C900173DFD /* UIImage+GIF.m */; };
 		087194AA1D4F64C900173DFD /* UIView+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 087194A71D4F64C900173DFD /* UIView+HUD.m */; };
@@ -24,10 +22,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		08522BAF1D52F17300A786D6 /* NextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NextViewController.h; sourceTree = "<group>"; };
-		08522BB01D52F17300A786D6 /* NextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NextViewController.m; sourceTree = "<group>"; };
-		0871949E1D4F4DFF00173DFD /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		0871949F1D4F4DFF00173DFD /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		087194A21D4F64C900173DFD /* TTHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTHUDView.h; sourceTree = "<group>"; };
 		087194A31D4F64C900173DFD /* TTHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTHUDView.m; sourceTree = "<group>"; };
 		087194A41D4F64C900173DFD /* UIImage+GIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GIF.h"; sourceTree = "<group>"; };
@@ -123,10 +117,6 @@
 				B4AD20D61D4B926F002B5F12 /* AppDelegate.m */,
 				B4AD20D81D4B926F002B5F12 /* ViewController.h */,
 				B4AD20D91D4B926F002B5F12 /* ViewController.m */,
-				0871949E1D4F4DFF00173DFD /* SecondViewController.h */,
-				0871949F1D4F4DFF00173DFD /* SecondViewController.m */,
-				08522BAF1D52F17300A786D6 /* NextViewController.h */,
-				08522BB01D52F17300A786D6 /* NextViewController.m */,
 				087ACFD51D51B86B006F9036 /* TTHelper.h */,
 				087ACFD61D51B86B006F9036 /* TTHelper.m */,
 				B4AD20DB1D4B926F002B5F12 /* Main.storyboard */,
@@ -269,11 +259,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				087194AA1D4F64C900173DFD /* UIView+HUD.m in Sources */,
-				08522BB11D52F17300A786D6 /* NextViewController.m in Sources */,
 				087194A91D4F64C900173DFD /* UIImage+GIF.m in Sources */,
 				B4AD20DA1D4B926F002B5F12 /* ViewController.m in Sources */,
 				B4AD20D71D4B926F002B5F12 /* AppDelegate.m in Sources */,
-				087194A01D4F4DFF00173DFD /* SecondViewController.m in Sources */,
 				087ACFD71D51B86B006F9036 /* TTHelper.m in Sources */,
 				087194A81D4F64C900173DFD /* TTHUDView.m in Sources */,
 				B4AD20D41D4B926F002B5F12 /* main.m in Sources */,
