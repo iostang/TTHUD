@@ -30,17 +30,14 @@ static NSString * const kImageName_LoadingImage  = @"jiuailogo_loading";
 
 #define kImage_CustomImage(name) \
 ({ \
-NSString *bundlePath = [[NSBundle mainBundle].resourcePath stringByAppendingPathComponent:kBundelName]; \
-UIImage *image_Add = [UIImage imageWithContentsOfFile: [[NSBundle bundleWithPath:bundlePath] pathForResource:name ofType:@"png"]]; \
+UIImage *image_Add = [UIImage imageNamed:[kBundelName stringByAppendingPathComponent:name]]; \
 image_Add; \
 })
 
 
 #define kImage_LoadingImage \
 ({\
-NSString *bundlePath = [[NSBundle mainBundle].resourcePath stringByAppendingPathComponent:kBundelName]; \
-NSData *data = [NSData dataWithContentsOfFile:[[NSBundle bundleWithPath:bundlePath] pathForResource:kImageName_LoadingImage ofType:@"gif"]]; \
-UIImage *image_Loading = [UIImage sd_animatedGIFWithData:data]; \
+UIImage *image_Loading = [UIImage sd_animatedGIFNamed:[kBundelName stringByAppendingPathComponent:kImageName_LoadingImage]]; \
 image_Loading; \
 })
 
@@ -76,7 +73,7 @@ image_Loading; \
 #define kHeight_TextBottomMargin     118
 
 /* 没网时文本高度*/
-#define kHeight_NetWorkVeryBadHeight 41
+#define kHeight_NetWorkVeryBadHeight 44
 
 /* label max width */
 #define  kTitleLabel_PreferredMaxLayoutWidth           (kWidth_ScreenWidth-100)
