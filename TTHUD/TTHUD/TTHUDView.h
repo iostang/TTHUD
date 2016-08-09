@@ -93,6 +93,10 @@ typedef NS_ENUM(NSInteger,TTHUDShowType) {
  */
 + (BOOL)hideLoadingFromView:(UIView *)view;
 
+/**
+ *  dismiss loading view delay
+ */
++ (BOOL)hideLoadingFromView:(UIView *)view delay:(NSTimeInterval)delay;
 
 #pragma mark - 自定义位置
 

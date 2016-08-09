@@ -33,7 +33,7 @@
 #pragma mark - 隐藏
 #pragma mark -
 + (BOOL)hideLoadingFromView:(UIView *)view;
-
++ (BOOL)hideLoadingFromView:(UIView *)view delay:(NSTimeInterval)delay;
 #pragma mark - 自定义位置
 #pragma mark -
 

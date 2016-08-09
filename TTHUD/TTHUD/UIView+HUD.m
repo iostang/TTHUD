@@ -162,6 +162,16 @@ static NSString * classAddress = @"";
     return nil;
 }
 
+/**
+ *  dismiss loading view delay
+ */
++ (BOOL)tt_hideLoadingFromView:(UIView *)view delay:(NSTimeInterval)delay
+{
+    
+    [TTHUDView performSelector:@selector(hideLoadingFromView:) withObject:view afterDelay:delay];
+    
+    return YES;
+}
 
 /**
  *  计时器方法

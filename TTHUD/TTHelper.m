@@ -71,6 +71,11 @@
     return [TTHUDView hideLoadingFromView:view];
 }
 
++ (BOOL)hideLoadingFromView:(UIView *)view delay:(NSTimeInterval)delay
+{
+    return [TTHUDView hideLoadingFromView:view delay:delay];
+}
+
 #pragma mark - 自定义位置
 #pragma mark -
 

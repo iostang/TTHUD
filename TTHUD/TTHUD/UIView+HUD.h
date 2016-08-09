@@ -21,7 +21,7 @@ typedef NS_ENUM(NSInteger, TTHUDType) {
 
 - (void)tt_showHUD:(UIView *)hudView type:(TTHUDType)type;
 - (void)tt_showLoading:(UIView *)loadingView;
-
++ (BOOL)tt_hideLoadingFromView:(UIView *)view delay:(NSTimeInterval)delay;
 + (BOOL)tt_hideLoadingFromView:(UIView *)view;
 
 @end

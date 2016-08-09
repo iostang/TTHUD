@@ -17,18 +17,6 @@ Stuff; \
 _Pragma("clang diagnostic pop") \
 } while (0)
 
-static NSString * const kHUDTitle_SelectedBrand              = @"请选择品牌";
-static NSString * const kHUDTitle_SelectedGoodsSpecification = @"请选择商品属性规格";
-static NSString * const kHUDTitle_AddDetailDescription       = @"请添加详细描述";
-static NSString * const kHUDTitle_SelectedIsNew              = @"请选择是否全新";
-static NSString * const kHUDTitle_NoTitleNoCan               = @"没有标题怎么行";
-static NSString * const kHUDTitle_NoMoneyNoBB                = @"不能不谈价格哦";
-static NSString * const kHUDTitle_PostageCannotBeZero        = @"邮费不能为零哦";
-static NSString * const kHUDTitle_ClearCaChe                 = @"缓存清理成功";
-static NSString * const kHUDTitle_FocusSuccess               = @"关注成功";
-static NSString * const kHUDTitle_CommentSuccess             = @"添加评论成功";
-static NSString * const kHUDTitle_Loading                    = @"Loading";
-static NSString * const kHUDTitle_NetworkVeryBad             = @"网络有点慢，好心塞";
 
 static NSString *const kCellIdentifier = @"cellIdentifier";
 
@@ -90,7 +78,7 @@ static NSString *const kCellIdentifier = @"cellIdentifier";
 
 - (void)bottom
 {
-    [TTHelper showRightHUDToViewBottom:self.view message:kHUDTitle_CommentSuccess];
+    [TTHelper showRightHUDToViewBottom:self.view message:@"底部位置显示"];
 }
 
 - (void)network
@@ -100,7 +88,7 @@ static NSString *const kCellIdentifier = @"cellIdentifier";
 
 - (void)center
 {
-    [TTHelper showHUDToViewCenter:self.view message:kHUDTitle_NoMoneyNoBB];
+    [TTHelper showHUDToViewCenter:self.view message:@"中间位置显示"];
 }
 
 - (void)success
@@ -115,7 +103,7 @@ static NSString *const kCellIdentifier = @"cellIdentifier";
 
 - (void)stop
 {
-    [TTHelper hideLoadingFromView:self.view];
+    [TTHelper hideLoadingFromView:self.view delay:3];
 }
 
 - (void)loading

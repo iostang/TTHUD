@@ -175,6 +175,14 @@
     return [TTHUDView tt_hideLoadingFromView:view];
 }
 
+/**
+ *  dismiss loading view delay
+ */
++ (BOOL)hideLoadingFromView:(UIView *)view delay:(NSTimeInterval)delay
+{
+    return [TTHUDView tt_hideLoadingFromView:view delay:delay];
+}
+
 #pragma mark - 自定义HUD偏移量
 
 /**
