@@ -170,6 +170,8 @@
 				TargetAttributes = {
 					B4AD20CE1D4B926F002B5F12 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 2Y73JA78VJ;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -379,9 +381,11 @@
 			baseConfigurationReference = 44E264218B2504D1DEBCB508 /* Pods-TTHUD.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TTHUD/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = oktangcc.TTHUD;
+				PRODUCT_BUNDLE_IDENTIFIER = com.oktang.hud;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -391,10 +395,15 @@
 			baseConfigurationReference = 2429B4477368B830FCA23601 /* Pods-TTHUD.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Peng Guo (2Y73JA78VJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Peng Guo (2Y73JA78VJ)";
+				DEVELOPMENT_TEAM = 2Y73JA78VJ;
 				INFOPLIST_FILE = TTHUD/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = oktangcc.TTHUD;
+				PRODUCT_BUNDLE_IDENTIFIER = com.oktang.hud;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "5e8d24c6-6feb-409b-9325-34bf77660f7b";
+				PROVISIONING_PROFILE_SPECIFIER = com.oktang.hud_adhoc;
 			};
 			name = Release;
 		};
