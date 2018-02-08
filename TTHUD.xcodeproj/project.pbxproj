@@ -170,8 +170,8 @@
 				TargetAttributes = {
 					B4AD20CE1D4B926F002B5F12 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 2Y73JA78VJ;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = JZMTFJPQ8W;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -382,11 +382,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JZMTFJPQ8W;
 				INFOPLIST_FILE = TTHUD/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.oktang.hud;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -396,14 +398,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Peng Guo (2Y73JA78VJ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Peng Guo (2Y73JA78VJ)";
-				DEVELOPMENT_TEAM = 2Y73JA78VJ;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JZMTFJPQ8W;
 				INFOPLIST_FILE = TTHUD/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.oktang.hud;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5e8d24c6-6feb-409b-9325-34bf77660f7b";
-				PROVISIONING_PROFILE_SPECIFIER = com.oktang.hud_adhoc;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
